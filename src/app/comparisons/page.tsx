@@ -5,6 +5,24 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 
+function isValidDescription(paragraph: string, title: string): boolean {
+  if (!paragraph) return false;
+  if (paragraph.trim().startsWith('{') || paragraph.trim().startsWith('[')) return false;
+  if (/(@context|@type|headline|description|Article)/i.test(paragraph)) return false;
+  if (paragraph.trim() === title.trim()) return false;
+  if (!/^[А-ЯA-Zа-яa-z]/.test(paragraph.trim())) return false;
+  if (paragraph.trim().split(' ').length < 3) return false;
+  return true;
+}
+
+function cleanText(text: string): string {
+  let cleaned = text.replace(/<[^>]+>/g, ' ')
+  cleaned = cleaned.replace(/[#*_`>\-]/g, '')
+  cleaned = cleaned.replace(/<!--([\s\S]*?)-->/g, '')
+  cleaned = cleaned.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim()
+  return cleaned
+}
+
 export const metadata: Metadata = {
   title: 'Сравнения ИИ ботов | ИИ Боты 2025',
   description: 'Детальные сравнения популярных ИИ ботов: ChatGPT vs Claude, Midjourney vs DALL-E, GitHub Copilot vs Microsoft Copilot и других AI инструментов.',
@@ -17,25 +35,28 @@ export default function ComparisonsPage() {
   
   if (fs.existsSync(comparisonsDir)) {
     const files = fs.readdirSync(comparisonsDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
+    const mdFiles = files.filter(file => file.endsWith('-seo.md'))
+    const tempComparisons: Array<{title: string, slug: string, description: string, tools: string[]}> = []
     
     mdFiles.forEach(file => {
       const slug = file.replace('.md', '')
       const content = fs.readFileSync(path.join(comparisonsDir, file), 'utf-8')
-      
-      // Извлекаем заголовок и описание
       const titleMatch = content.match(/^#\s+(.+)$/m)
-      const title = titleMatch ? titleMatch[1] : slug
-      
-      // Ищем описание в первых параграфах
-      const paragraphs = content.split('\n\n').slice(1, 3).join(' ')
-      const description = paragraphs.length > 150 ? paragraphs.substring(0, 150) + '...' : paragraphs
-      
-      // Извлекаем названия инструментов из заголовка
+      const title = titleMatch ? cleanText(titleMatch[1]) : slug
+      const paragraphs = content.split(/\n\n+/).map(cleanText).filter(p => !/^\s*<script/i.test(p) && !/^\s*<meta/i.test(p) && !/^\s*<!--/i.test(p) && !/^\s*SEO Keywords:/i.test(p))
+      const found = paragraphs.find(p => isValidDescription(p, title))
+      const description = found ? (found.length > 150 ? found.slice(0, 150) + '...' : found) : ''
       const toolsMatch = title.match(/(.+?)\s+vs\s+(.+)/i)
       const tools = toolsMatch ? [toolsMatch[1].trim(), toolsMatch[2].trim()] : ['Инструмент 1', 'Инструмент 2']
-      
-      comparisons.push({ title, slug, description, tools })
+      tempComparisons.push({ title, slug, description, tools })
+    })
+    // Фильтрация дубликатов по title
+    const uniqueTitles = new Set<string>()
+    tempComparisons.forEach(c => {
+      if (!uniqueTitles.has(c.title)) {
+        uniqueTitles.add(c.title)
+        comparisons.push(c)
+      }
     })
   }
 

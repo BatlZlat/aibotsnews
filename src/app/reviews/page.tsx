@@ -5,6 +5,28 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 
+function isValidDescription(paragraph: string, title: string): boolean {
+  if (!paragraph) return false;
+  if (paragraph.trim().startsWith('{') || paragraph.trim().startsWith('[')) return false;
+  if (/(@context|@type|headline|description|Article)/i.test(paragraph)) return false;
+  if (paragraph.trim() === title.trim()) return false;
+  if (!/^[А-ЯA-Zа-яa-z]/.test(paragraph.trim())) return false;
+  if (paragraph.trim().split(' ').length < 3) return false;
+  return true;
+}
+
+function cleanText(text: string): string {
+  // Удаляем meta-теги и html
+  let cleaned = text.replace(/<[^>]+>/g, ' ')
+  // Удаляем markdown (#, *, _, >, `, -)
+  cleaned = cleaned.replace(/[#*_`>\-]/g, '')
+  // Удаляем служебные комментарии <!-- ... --> (без флага s)
+  cleaned = cleaned.replace(/<!--([\s\S]*?)-->/g, '')
+  // Удаляем лишние пробелы и символы переноса
+  cleaned = cleaned.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim()
+  return cleaned
+}
+
 export const metadata: Metadata = {
   title: 'Отзывы пользователей об ИИ ботах | ИИ Боты 2025',
   description: 'Реальные отзывы пользователей о популярных ИИ ботах: ChatGPT, Claude, Midjourney, GitHub Copilot и других AI инструментах.',
@@ -17,19 +39,21 @@ export default function ReviewsPage() {
   
   if (fs.existsSync(reviewsDir)) {
     const files = fs.readdirSync(reviewsDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
+    // Берём только *-seo.md
+    const mdFiles = files.filter(file => file.endsWith('-seo.md'))
+    const tempReviews: Array<{title: string, slug: string, description: string, author: string, rating: number}> = []
     
     mdFiles.forEach(file => {
       const slug = file.replace('.md', '')
       const content = fs.readFileSync(path.join(reviewsDir, file), 'utf-8')
       
-      // Извлекаем заголовок и описание
+      // Извлекаем заголовок
       const titleMatch = content.match(/^#\s+(.+)$/m)
-      const title = titleMatch ? titleMatch[1] : slug
-      
-      // Ищем описание в первых параграфах
-      const paragraphs = content.split('\n\n').slice(1, 3).join(' ')
-      const description = paragraphs.length > 150 ? paragraphs.substring(0, 150) + '...' : paragraphs
+      const title = titleMatch ? cleanText(titleMatch[1]) : slug
+      // Фильтруем SEO-блоки (убираем <script>, <meta>, <!-- ... -->, комментарии)
+      const paragraphs = content.split(/\n\n+/).map(cleanText).filter(p => !/^\s*<script/i.test(p) && !/^\s*<meta/i.test(p) && !/^\s*<!--/i.test(p) && !/^\s*SEO Keywords:/i.test(p))
+      const found = paragraphs.find(p => isValidDescription(p, title))
+      const description = found ? (found.length > 150 ? found.slice(0, 150) + '...' : found) : ''
       
       // Извлекаем автора и рейтинг из контента
       const authorMatch = content.match(/Автор:\s*(.+)/i)
@@ -38,7 +62,15 @@ export default function ReviewsPage() {
       const ratingMatch = content.match(/Рейтинг:\s*(\d+)/i)
       const rating = ratingMatch ? parseInt(ratingMatch[1]) : 5
       
-      reviews.push({ title, slug, description, author, rating })
+      tempReviews.push({ title, slug, description, author, rating })
+    })
+    // Фильтрация дубликатов по title
+    const uniqueTitles = new Set<string>()
+    tempReviews.forEach(r => {
+      if (!uniqueTitles.has(r.title)) {
+        uniqueTitles.add(r.title)
+        reviews.push(r)
+      }
     })
   }
 

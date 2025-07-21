@@ -5,10 +5,30 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 
+function isValidDescription(paragraph: string, title: string): boolean {
+  if (!paragraph) return false;
+  // Не JSON, не schema.org, не повтор заголовка, не технический блок
+  if (paragraph.trim().startsWith('{') || paragraph.trim().startsWith('[')) return false;
+  if (/(@context|@type|headline|description|Article)/i.test(paragraph)) return false;
+  if (paragraph.trim() === title.trim()) return false;
+  // Должно быть хотя бы 2 слова и начинаться с буквы
+  if (!/^[А-ЯA-Zа-яa-z]/.test(paragraph.trim())) return false;
+  if (paragraph.trim().split(' ').length < 3) return false;
+  return true;
+}
+
+function cleanText(text: string): string {
+  let cleaned = text.replace(/<[^>]+>/g, ' ')
+  cleaned = cleaned.replace(/[#*_`>\-]/g, '')
+  cleaned = cleaned.replace(/<!--([\s\S]*?)-->/g, '')
+  cleaned = cleaned.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim()
+  return cleaned
+}
+
 export const metadata: Metadata = {
   title: 'Руководства по ИИ ботам | ИИ Боты 2025',
-  description: 'Подробные руководства по использованию популярных ИИ ботов: ChatGPT, Claude, Midjourney, GitHub Copilot и других AI инструментов.',
-  keywords: 'руководства ИИ боты, как использовать ChatGPT, инструкции Claude, руководство Midjourney',
+  description: 'Пошаговые инструкции и гайды по использованию ИИ ботов: ChatGPT, Claude, Midjourney, GitHub Copilot и других AI инструментов.',
+  keywords: 'руководства ИИ боты, инструкции ChatGPT, гайд Claude, как использовать AI',
 }
 
 export default function GuidesPage() {
@@ -17,21 +37,26 @@ export default function GuidesPage() {
   
   if (fs.existsSync(guidesDir)) {
     const files = fs.readdirSync(guidesDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
+    const mdFiles = files.filter(file => file.endsWith('-seo.md'))
+    const tempGuides: Array<{title: string, slug: string, description: string}> = []
     
     mdFiles.forEach(file => {
       const slug = file.replace('.md', '')
       const content = fs.readFileSync(path.join(guidesDir, file), 'utf-8')
-      
-      // Извлекаем заголовок и описание
       const titleMatch = content.match(/^#\s+(.+)$/m)
-      const title = titleMatch ? titleMatch[1] : slug
-      
-      // Ищем описание в первых параграфах
-      const paragraphs = content.split('\n\n').slice(1, 3).join(' ')
-      const description = paragraphs.length > 100 ? paragraphs.substring(0, 100) + '...' : paragraphs
-      
-      guides.push({ title, slug, description })
+      const title = titleMatch ? cleanText(titleMatch[1]) : slug
+      const paragraphs = content.split(/\n\n+/).map(cleanText).filter(p => !/^\s*<script/i.test(p) && !/^\s*<meta/i.test(p) && !/^\s*<!--/i.test(p) && !/^\s*SEO Keywords:/i.test(p))
+      const found = paragraphs.find(p => isValidDescription(p, title))
+      const description = found ? (found.length > 150 ? found.slice(0, 150) + '...' : found) : ''
+      tempGuides.push({ title, slug, description })
+    })
+    // Фильтрация дубликатов по title
+    const uniqueTitles = new Set<string>()
+    tempGuides.forEach(g => {
+      if (!uniqueTitles.has(g.title)) {
+        uniqueTitles.add(g.title)
+        guides.push(g)
+      }
     })
   }
 

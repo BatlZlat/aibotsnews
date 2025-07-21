@@ -5,6 +5,24 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 
+function isValidDescription(paragraph: string, title: string): boolean {
+  if (!paragraph) return false;
+  if (paragraph.trim().startsWith('{') || paragraph.trim().startsWith('[')) return false;
+  if (/(@context|@type|headline|description|Article)/i.test(paragraph)) return false;
+  if (paragraph.trim() === title.trim()) return false;
+  if (!/^[А-ЯA-Zа-яa-z]/.test(paragraph.trim())) return false;
+  if (paragraph.trim().split(' ').length < 3) return false;
+  return true;
+}
+
+function cleanText(text: string): string {
+  let cleaned = text.replace(/<[^>]+>/g, ' ')
+  cleaned = cleaned.replace(/[#*_`>\-]/g, '')
+  cleaned = cleaned.replace(/<!--([\s\S]*?)-->/g, '')
+  cleaned = cleaned.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim()
+  return cleaned
+}
+
 export const metadata: Metadata = {
   title: 'Рейтинги ИИ ботов | ИИ Боты 2025',
   description: 'Топ рейтинги лучших ИИ ботов: чат-боты, генераторы изображений, инструменты для программирования и продуктивности в 2025 году.',
@@ -17,35 +35,36 @@ export default function RatingsPage() {
   
   if (fs.existsSync(ratingsDir)) {
     const files = fs.readdirSync(ratingsDir)
-    const mdFiles = files.filter(file => file.endsWith('.md'))
+    const mdFiles = files.filter(file => file.endsWith('-seo.md'))
+    const tempRatings: Array<{title: string, slug: string, description: string, category: string, topCount: number}> = []
     
     mdFiles.forEach(file => {
       const slug = file.replace('.md', '')
       const content = fs.readFileSync(path.join(ratingsDir, file), 'utf-8')
-      
-      // Извлекаем заголовок и описание
       const titleMatch = content.match(/^#\s+(.+)$/m)
-      const title = titleMatch ? titleMatch[1] : slug
-      
-      // Ищем описание в первых параграфах
-      const paragraphs = content.split('\n\n').slice(1, 3).join(' ')
-      const description = paragraphs.length > 150 ? paragraphs.substring(0, 150) + '...' : paragraphs
-      
-      // Определяем категорию и количество топов из заголовка
+      const title = titleMatch ? cleanText(titleMatch[1]) : slug
+      const paragraphs = content.split(/\n\n+/).map(cleanText).filter(p => !/^\s*<script/i.test(p) && !/^\s*<meta/i.test(p) && !/^\s*<!--/i.test(p) && !/^\s*SEO Keywords:/i.test(p))
+      const found = paragraphs.find(p => isValidDescription(p, title))
+      const description = found ? (found.length > 150 ? found.slice(0, 150) + '...' : found) : ''
       let category = 'Общий рейтинг'
       let topCount = 10
-      
       if (title.includes('чат-бот')) category = 'Чат-боты'
       else if (title.includes('изображен')) category = 'Генераторы изображений'
       else if (title.includes('программир')) category = 'Инструменты для программирования'
       else if (title.includes('продуктивн')) category = 'Инструменты продуктивности'
-      
       const topMatch = title.match(/топ-(\d+)/i)
       if (topMatch) {
         topCount = parseInt(topMatch[1])
       }
-      
-      ratings.push({ title, slug, description, category, topCount })
+      tempRatings.push({ title, slug, description, category, topCount })
+    })
+    // Фильтрация дубликатов по title
+    const uniqueTitles = new Set<string>()
+    tempRatings.forEach(r => {
+      if (!uniqueTitles.has(r.title)) {
+        uniqueTitles.add(r.title)
+        ratings.push(r)
+      }
     })
   }
 

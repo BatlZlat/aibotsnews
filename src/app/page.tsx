@@ -2,6 +2,31 @@ import Link from 'next/link'
 import { Metadata } from 'next'
 import { AdZone } from '@/components/ads/AdZone'
 import { PartnerLink } from '@/components/ads/PartnerLink'
+import fs from 'fs'
+import path from 'path'
+
+function cleanText(text: string): string {
+  let cleaned = text.replace(/<[^>]+>/g, ' ')
+  cleaned = cleaned.replace(/[#*_`>\-]/g, '')
+  cleaned = cleaned.replace(/<!--([\s\S]*?)-->/g, '')
+  cleaned = cleaned.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim()
+  return cleaned
+}
+
+function getArticles(dir: string, max: number = 4) {
+  const result: Array<{title: string, slug: string}> = []
+  if (fs.existsSync(dir)) {
+    const files = fs.readdirSync(dir)
+    files.filter(f => f.endsWith('-seo.md')).forEach(file => {
+      const slug = file.replace('.md', '')
+      const content = fs.readFileSync(path.join(dir, file), 'utf-8')
+      const titleMatch = content.match(/^#\s+(.+)$/m)
+      const title = titleMatch ? cleanText(titleMatch[1]) : slug
+      result.push({ title, slug })
+    })
+  }
+  return result.slice(0, max)
+}
 
 export const metadata: Metadata = {
   title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
@@ -16,6 +41,16 @@ export const metadata: Metadata = {
 }
 
 export default function HomePage() {
+  const guidesDir = path.join(process.cwd(), 'content/articles/guides')
+  const ratingsDir = path.join(process.cwd(), 'content/articles/ratings')
+  const reviewsDir = path.join(process.cwd(), 'content/articles/reviews')
+  const newsDir = path.join(process.cwd(), 'content/articles/news')
+
+  const guides = getArticles(guidesDir, 4)
+  const ratings = getArticles(ratingsDir, 4)
+  const reviews = getArticles(reviewsDir, 4)
+  const news = getArticles(newsDir, 4)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Hero Section */}
@@ -58,21 +93,15 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 px-4">Популярные ИИ инструменты</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {[
-              { name: 'ChatGPT', icon: '🤖', href: '/guides/chatgpt' },
-              { name: 'Claude', icon: '🧠', href: '/guides/claude' },
-              { name: 'Midjourney', icon: '🎨', href: '/guides/midjourney' },
-              { name: 'GitHub Copilot', icon: '💻', href: '/guides/github-copilot' },
-            ].map((tool) => (
-              <Link 
-                key={tool.name}
-                href={tool.href}
-                className="bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6 rounded-xl hover:shadow-lg transition-all duration-300 border border-blue-100"
+            {guides.map(g => (
+              <a
+                key={g.slug}
+                href={`/articles/${g.slug}`}
+                className="block bg-gradient-to-r from-blue-50 to-indigo-50 p-4 sm:p-6 rounded-xl hover:shadow-lg transition-all duration-300 border border-blue-100"
               >
-                <div className="text-3xl sm:text-4xl mb-3 sm:mb-4">{tool.icon}</div>
-                <h3 className="text-lg sm:text-xl font-semibold text-gray-900">{tool.name}</h3>
-                <p className="text-gray-600 mt-2 text-sm sm:text-base">Подробное руководство</p>
-              </Link>
+                <div className="text-lg sm:text-xl font-semibold text-gray-900 mb-1 sm:mb-2">{g.title}</div>
+                <div className="text-gray-600 text-sm sm:text-base">Подробное руководство</div>
+              </a>
             ))}
           </div>
         </div>
@@ -99,28 +128,12 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                 Пошаговые инструкции по использованию популярных ИИ инструментов
               </p>
-              <div className="space-y-2 sm:space-y-3">
-                {[
-                  'Как использовать ChatGPT эффективно',
-                  'Руководство по Midjourney',
-                  'Работа с Claude AI',
-                  'GitHub Copilot для разработчиков'
-                ].map((guide) => (
-                  <Link 
-                    key={guide}
-                    href="/articles/how-to-use-chatgpt-effectively-2025-seo"
-                    className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
-                  >
-                    → {guide}
-                  </Link>
+              <div className="space-y-2">
+                {guides.map(g => (
+                  <a key={g.slug} href={`/articles/${g.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {g.title}</a>
                 ))}
+                <a href="/guides" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все руководства →</a>
               </div>
-              <Link 
-                href="/guides"
-                className="inline-block mt-4 sm:mt-6 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base"
-              >
-                Все руководства →
-              </Link>
             </div>
 
             {/* Ratings Section */}
@@ -132,28 +145,12 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                 Объективные рейтинги лучших ИИ инструментов по категориям
               </p>
-              <div className="space-y-2 sm:space-y-3">
-                {[
-                  'Топ-10 ИИ чат-ботов',
-                  'Лучшие генераторы изображений',
-                  'ИИ инструменты для продуктивности',
-                  'AI помощники для программирования'
-                ].map((rating) => (
-                  <Link 
-                    key={rating}
-                    href="/articles/top-10-ai-chatbots-2025-seo"
-                    className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
-                  >
-                    → {rating}
-                  </Link>
+              <div className="space-y-2">
+                {ratings.map(r => (
+                  <a key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</a>
                 ))}
+                <a href="/ratings" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все рейтинги →</a>
               </div>
-              <Link 
-                href="/ratings"
-                className="inline-block mt-4 sm:mt-6 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base"
-              >
-                Все рейтинги →
-              </Link>
             </div>
 
             {/* Reviews Section */}
@@ -165,28 +162,12 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                 Реальные отзывы пользователей о популярных ИИ инструментах
               </p>
-              <div className="space-y-2 sm:space-y-3">
-                {[
-                  'Отзыв о ChatGPT от маркетолога',
-                  'Claude AI глазами разработчика',
-                  'Midjourney в работе дизайнера',
-                  'GitHub Copilot для программистов'
-                ].map((review) => (
-                  <Link 
-                    key={review}
-                    href="/articles/chatgpt-user-review-2025-seo"
-                    className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
-                  >
-                    → {review}
-                  </Link>
+              <div className="space-y-2">
+                {reviews.map(r => (
+                  <a key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</a>
                 ))}
+                <a href="/reviews" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все отзывы →</a>
               </div>
-              <Link 
-                href="/reviews"
-                className="inline-block mt-4 sm:mt-6 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base"
-              >
-                Все отзывы →
-              </Link>
             </div>
 
             {/* News Section */}
@@ -198,28 +179,12 @@ export default function HomePage() {
               <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
                 Последние новости и тренды в мире искусственного интеллекта
               </p>
-              <div className="space-y-2 sm:space-y-3">
-                {[
-                  'Революция AI в программировании',
-                  'Новые возможности ChatGPT',
-                  'ИИ в бизнесе и автоматизация',
-                  'Тренды AI в 2025 году'
-                ].map((news) => (
-                  <Link 
-                    key={news}
-                    href="/articles/ai-programming-revolution-2025-seo"
-                    className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
-                  >
-                    → {news}
-                  </Link>
+              <div className="space-y-2">
+                {news.map(n => (
+                  <a key={n.slug} href={`/articles/${n.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {n.title}</a>
                 ))}
+                <a href="/news" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все новости →</a>
               </div>
-              <Link 
-                href="/news"
-                className="inline-block mt-4 sm:mt-6 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base"
-              >
-                Все новости →
-              </Link>
             </div>
 
           </div>
