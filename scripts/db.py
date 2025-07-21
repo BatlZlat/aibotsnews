@@ -9,7 +9,8 @@ DB_CONFIG = {
     'password': os.getenv('PGPASSWORD'),
     'database': os.getenv('PGDATABASE'),
     'host': os.getenv('PGHOST'),
-    'port': os.getenv('PGPORT', 5432)
+    'port': os.getenv('PGPORT', 5432),
+    'ssl': False
 }
 
 class Database:
