@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://aibotsguide.com/sitemap.xml
+
+# Disallow admin areas
+Disallow: /admin/
+Disallow: /private/
+
+# Allow important directories
+Allow: /content/
+Allow: /public/
