@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect } from 'react';
 import { getAdZonesByPosition, shouldShowAds } from '@/utils/ads';
 
@@ -15,9 +17,10 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
     const container = document.getElementById(zoneId);
     if (container && !container.innerHTML) {
       container.innerHTML = `
-        <div class="bg-gray-100 rounded-lg p-4 text-center text-gray-500 text-sm">
-          <div class="mb-2">📢 Рекламный блок</div>
-          <div class="text-xs">${zoneId}</div>
+        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 sm:p-4 text-center text-gray-600 text-xs sm:text-sm border border-blue-200">
+          <div class="mb-1 sm:mb-2 font-medium">📢 Рекламный блок</div>
+          <div class="text-xs opacity-75">${zoneId}</div>
+          <div class="mt-2 text-xs opacity-50">728x90 | 300x250 | 320x50</div>
         </div>
       `;
     }
@@ -26,7 +29,7 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
   return (
     <div 
       id={zoneId}
-      className={`ad-zone ${className}`}
+      className={`ad-zone w-full ${className}`}
       data-zone-id={zoneId}
     />
   );
