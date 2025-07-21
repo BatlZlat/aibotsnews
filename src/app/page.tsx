@@ -108,7 +108,7 @@ export default function HomePage() {
                 ].map((guide) => (
                   <Link 
                     key={guide}
-                    href="/guides"
+                    href="/articles/how-to-use-chatgpt-effectively-2025-seo"
                     className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
                   >
                     → {guide}
@@ -141,7 +141,7 @@ export default function HomePage() {
                 ].map((rating) => (
                   <Link 
                     key={rating}
-                    href="/ratings"
+                    href="/articles/top-10-ai-chatbots-2025-seo"
                     className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
                   >
                     → {rating}
@@ -174,7 +174,7 @@ export default function HomePage() {
                 ].map((review) => (
                   <Link 
                     key={review}
-                    href="/reviews"
+                    href="/articles/chatgpt-user-review-2025-seo"
                     className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
                   >
                     → {review}
@@ -207,7 +207,7 @@ export default function HomePage() {
                 ].map((news) => (
                   <Link 
                     key={news}
-                    href="/news"
+                    href="/articles/ai-programming-revolution-2025-seo"
                     className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base"
                   >
                     → {news}
