@@ -67,10 +67,10 @@ export default function GuidesPage() {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Руководства по ИИ ботам
-          </h1>
+            </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Подробные инструкции по использованию популярных ИИ инструментов. Научитесь эффективно работать с ChatGPT, Claude, Midjourney и другими AI помощниками.
-          </p>
+            </p>
         </div>
       </section>
 
@@ -93,14 +93,14 @@ export default function GuidesPage() {
               >
                 <div className="mb-4">
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                    {guide.title}
-                  </h3>
+                      {guide.title}
+                    </h3>
                   <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
-                    {guide.description}
-                  </p>
+                      {guide.description}
+                    </p>
                 </div>
                 <div className="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base">
-                  Читать руководство →
+                      Читать руководство →
                 </div>
               </Link>
             ))}
@@ -166,12 +166,12 @@ export default function GuidesPage() {
           <p className="text-lg sm:text-xl text-blue-100 mb-6 sm:mb-8">
             Выберите интересующее вас руководство и следуйте пошаговым инструкциям
           </p>
-          <Link 
-            href="/ratings"
+            <Link 
+              href="/ratings"
             className="bg-white text-blue-600 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm sm:text-base"
-          >
-            Смотреть рейтинги
-          </Link>
+            >
+              Смотреть рейтинги
+            </Link>
         </div>
       </section>
     </div>

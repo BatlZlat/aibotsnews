@@ -16,13 +16,13 @@ export default function Layout({ children, showAds = true }: LayoutProps) {
       <Header />
       
       <main className="flex-1">
-        {showAds && <AdZone zoneId="header-banner" />}
-        
-        {children}
+      {showAds && <AdZone zoneId="header-banner" />}
+      
+            {children}
         
         {showAds && <AdZone zoneId="footer-banner" />}
-      </main>
-
+          </main>
+          
       <Footer />
       
       {/* Защита авторских прав */}

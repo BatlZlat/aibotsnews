@@ -75,10 +75,10 @@ export default function RatingsPage() {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             Рейтинги ИИ ботов
-          </h1>
+            </h1>
           <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4">
             Топ рейтинги лучших ИИ инструментов по категориям. Узнайте, какие ИИ боты занимают первые места в 2025 году.
-          </p>
+            </p>
         </div>
       </section>
 
@@ -103,22 +103,22 @@ export default function RatingsPage() {
                   {/* Category and Top Count */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="inline-block px-3 py-1 bg-yellow-100 text-yellow-800 text-xs font-medium rounded-full">
-                      {rating.category}
+                        {rating.category}
                     </span>
                     <span className="text-sm text-gray-500 font-medium">
                       Топ {rating.topCount}
                     </span>
-                  </div>
+                      </div>
                   
                   <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3">
-                    {rating.title}
-                  </h3>
+                      {rating.title}
+                    </h3>
                   <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-4">
-                    {rating.description}
-                  </p>
+                      {rating.description}
+                    </p>
                 </div>
                 <div className="flex items-center text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base">
-                  Смотреть рейтинг →
+                      Смотреть рейтинг →
                 </div>
               </Link>
             ))}
@@ -130,8 +130,8 @@ export default function RatingsPage() {
       <div className="px-4 sm:px-6 lg:px-8 py-8">
         <div className="max-w-7xl mx-auto">
           <AdZone zoneId="ratings-middle-banner" className="mb-6" />
-        </div>
-      </div>
+            </div>
+            </div>
 
       {/* Featured Tools */}
       <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -184,12 +184,12 @@ export default function RatingsPage() {
           <p className="text-lg sm:text-xl text-yellow-100 mb-6 sm:mb-8">
             Изучите рейтинги и выберите ИИ инструмент, который подходит именно вам
           </p>
-          <Link 
-            href="/guides"
+            <Link 
+              href="/guides"
             className="bg-white text-yellow-600 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-sm sm:text-base"
-          >
+            >
             Смотреть руководства
-          </Link>
+            </Link>
         </div>
       </section>
     </div>

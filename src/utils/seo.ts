@@ -1,5 +1,7 @@
 import { SEOData, PageMetadata } from '@/types';
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}` || 'https://your-domain.com';
+
 /**
  * Генерирует метаданные для страницы
  */
@@ -33,14 +35,14 @@ export function generateArticleStructuredData(article: any) {
       name: 'ИИ Боты - Обзоры и Сравнения',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://your-domain.com/logo.png',
+        url: `${baseUrl}/logo.png`,
       },
     },
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
     mainEntityOfPage: {
       '@type': 'WebPage',
-      '@id': `https://your-domain.com/articles/${article.slug}`,
+      '@id': `${baseUrl}/articles/${article.slug}`,
     },
   };
 }
@@ -113,8 +115,8 @@ export function generateOrganizationStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'ИИ Боты - Обзоры и Сравнения',
-    url: 'https://your-domain.com',
-    logo: 'https://your-domain.com/logo.png',
+    url: baseUrl,
+    logo: `${baseUrl}/logo.png`,
     description: 'Современный сайт-блог для обзоров и сравнений ИИ ботов',
     sameAs: [
       'https://t.me/ai_bots_ru',
@@ -131,13 +133,13 @@ export function generateWebsiteStructuredData() {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'ИИ Боты - Обзоры и Сравнения',
-    url: 'https://your-domain.com',
+    url: baseUrl,
     description: 'Современный сайт-блог для обзоров и сравнений ИИ ботов',
     potentialAction: {
       '@type': 'SearchAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: 'https://your-domain.com/search?q={search_term_string}',
+        urlTemplate: `${baseUrl}/search?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
     },
@@ -175,7 +177,7 @@ export function generateMetaTags(metadata: PageMetadata) {
  */
 export function generateSitemapUrl(path: string, lastmod?: string, changefreq?: string, priority?: number) {
   return {
-    loc: `https://your-domain.com${path}`,
+    loc: `${baseUrl}${path}`,
     lastmod: lastmod || new Date().toISOString(),
     changefreq: changefreq || 'weekly',
     priority: priority || 0.5,
@@ -227,6 +229,5 @@ export function generateSlug(title: string): string {
  * Создает canonical URL
  */
 export function createCanonicalUrl(path: string): string {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-domain.com';
   return `${baseUrl}${path}`;
 } 
