@@ -1,7 +1,7 @@
 -- Схема базы данных для проекта "ИИ Боты" (aibotsnews)
 -- Создание таблиц и триггеров
 
--- 1. Источники для парсинга
+-- 1. Источники для парсинга статей
 CREATE TABLE IF NOT EXISTS sources (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
