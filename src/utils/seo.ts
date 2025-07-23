@@ -19,7 +19,7 @@ export function generateSEOData(data: SEOData): PageMetadata {
 /**
  * Создает структурированные данные для статьи
  */
-export function generateArticleStructuredData(article: any) {
+export function generateArticleStructuredData(article: Record<string, unknown>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -68,7 +68,7 @@ export function generateFAQStructuredData(faqs: Array<{ question: string; answer
 /**
  * Создает структурированные данные для обзора
  */
-export function generateReviewStructuredData(review: any) {
+export function generateReviewStructuredData(review: Record<string, unknown>) {
   return {
     '@context': 'https://schema.org',
     '@type': 'Review',

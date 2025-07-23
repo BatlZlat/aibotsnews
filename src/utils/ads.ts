@@ -301,12 +301,12 @@ declare global {
     Ya?: {
       Context?: {
         AdvManager?: {
-          render: (config: any) => void;
+          render: (config: Record<string, unknown>) => void;
         };
       };
     };
-    gtag?: (...args: any[]) => void;
-    ym?: (id: number, action: string, goal: string, params?: any) => void;
-    adsbygoogle?: any[];
+    gtag?: (...args: unknown[]) => void;
+    ym?: (id: number, action: string, goal: string, params?: Record<string, unknown>) => void;
+    adsbygoogle?: unknown[];
   }
 } 

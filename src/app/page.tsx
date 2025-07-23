@@ -130,9 +130,9 @@ export default function HomePage() {
               </p>
               <div className="space-y-2">
                 {guides.map(g => (
-                  <a key={g.slug} href={`/articles/${g.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {g.title}</a>
+                  <Link key={g.slug} href={`/articles/${g.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {g.title}</Link>
                 ))}
-                <a href="/guides" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все руководства →</a>
+                <Link href="/guides" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все руководства →</Link>
               </div>
             </div>
 
@@ -147,9 +147,9 @@ export default function HomePage() {
               </p>
               <div className="space-y-2">
                 {ratings.map(r => (
-                  <a key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</a>
+                  <Link key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</Link>
                 ))}
-                <a href="/ratings" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все рейтинги →</a>
+                <Link href="/ratings" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все рейтинги →</Link>
               </div>
             </div>
 
@@ -164,9 +164,9 @@ export default function HomePage() {
               </p>
               <div className="space-y-2">
                 {reviews.map(r => (
-                  <a key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</a>
+                  <Link key={r.slug} href={`/articles/${r.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {r.title}</Link>
                 ))}
-                <a href="/reviews" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все отзывы →</a>
+                <Link href="/reviews" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все отзывы →</Link>
               </div>
             </div>
 
@@ -181,9 +181,9 @@ export default function HomePage() {
               </p>
               <div className="space-y-2">
                 {news.map(n => (
-                  <a key={n.slug} href={`/articles/${n.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {n.title}</a>
+                  <Link key={n.slug} href={`/articles/${n.slug}`} className="block text-blue-600 hover:text-blue-800 transition-colors text-sm sm:text-base">→ {n.title}</Link>
                 ))}
-                <a href="/news" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все новости →</a>
+                <Link href="/news" className="inline-block mt-2 text-blue-600 hover:text-blue-800 font-semibold text-sm sm:text-base">Все новости →</Link>
               </div>
             </div>
 
