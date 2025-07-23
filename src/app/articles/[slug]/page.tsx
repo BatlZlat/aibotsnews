@@ -6,19 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
 
-interface ArticlePageProps {
-  params: {
-    slug: string
-  }
-}
-
-interface MetaData {
-  description?: string
-  keywords?: string
-  [key: string]: unknown
-}
-
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const articlesDir = path.join(process.cwd(), 'content/articles')
   const categories = ['main', 'guides', 'ratings', 'reviews', 'news', 'comparisons']
   const params: { slug: string }[] = []
@@ -39,7 +27,7 @@ export async function generateStaticParams() {
   return params
 }
 
-export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   const { slug } = params
   
   // Ищем статью во всех категориях
@@ -47,7 +35,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   const categories = ['main', 'guides', 'ratings', 'reviews', 'news', 'comparisons']
   
   let articleContent = ''
-  let metaData: MetaData = {}
+  let metaData: { description?: string; keywords?: string; [key: string]: unknown } = {}
   
   for (const category of categories) {
     const articlePath = path.join(articlesDir, category, `${slug}.md`)
@@ -89,7 +77,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   }
 }
 
-export default async function ArticlePage({ params }: ArticlePageProps) {
+export default async function Page({ params }: { params: { slug: string } }) {
   const { slug } = params
   
   // Ищем статью во всех категориях
