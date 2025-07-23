@@ -4,6 +4,7 @@ import { AdZone } from '@/components/ads/AdZone'
 import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
+import Link from 'next/link'
 
 interface ArticlePageProps {
   params: {
@@ -14,7 +15,7 @@ interface ArticlePageProps {
 interface MetaData {
   description?: string
   keywords?: string
-  [key: string]: any
+  [key: string]: unknown
 }
 
 export async function generateStaticParams() {
@@ -145,9 +146,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           {/* Breadcrumbs */}
           <nav className="text-sm text-gray-500 mb-6">
             <ol className="flex items-center space-x-2">
-              <li><a href="/" className="hover:text-blue-600">Главная</a></li>
+              <li><Link href="/" className="hover:text-blue-600">Главная</Link></li>
               <li>/</li>
-              <li><a href={`/${category}`} className="hover:text-blue-600 capitalize">{category}</a></li>
+              <li><Link href={`/${category}`} className="hover:text-blue-600 capitalize">{category}</Link></li>
               <li>/</li>
               <li className="text-gray-900">{title}</li>
             </ol>
@@ -187,23 +188,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
           <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Что такое ИИ боты в 2025 году</h3>
             <p className="text-gray-600 text-sm mb-4">Подробное руководство по искусственному интеллекту</p>
-            <a href="/articles/what-is-ai-bot-2024-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            <Link href="/articles/what-is-ai-bot-2024-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
               Читать далее →
-            </a>
+            </Link>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Топ-10 лучших ИИ ботов для бизнеса</h3>
             <p className="text-gray-600 text-sm mb-4">Рейтинг самых эффективных AI инструментов</p>
-            <a href="/articles/top-10-ai-bots-for-business-2024-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            <Link href="/articles/top-10-ai-bots-for-business-2024-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
               Читать далее →
-            </a>
+            </Link>
           </div>
           <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">Как выбрать ИИ бота для ваших задач</h3>
             <p className="text-gray-600 text-sm mb-4">Руководство по выбору подходящего инструмента</p>
-            <a href="/articles/how-to-choose-ai-bot-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+            <Link href="/articles/how-to-choose-ai-bot-seo" className="text-blue-600 hover:text-blue-800 text-sm font-medium">
               Читать далее →
-            </a>
+            </Link>
           </div>
         </div>
       </section>
