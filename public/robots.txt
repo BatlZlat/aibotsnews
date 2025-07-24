@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://aibotsguide.com/sitemap.xml
+Sitemap: https://aibotsnews.ru/sitemap.xml
 
 # Disallow admin areas
 Disallow: /admin/

@@ -77,6 +77,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+// Улучшенная функция для преобразования markdown-таблиц в HTML-таблицы
+function convertMarkdownTables(md: string): string {
+  // Ищем все таблицы по паттерну: строка с |, затем строка-разделитель, затем >=1 строка с |
+  return md.replace(/((?:^|\n)(\|[^\n]+\|)[ \t]*\n(\|[ \t\-:|]+\|)[ \t]*\n((?:\|[^\n]+\|[ \t]*\n?)+))/gm, (match: string, _table: string, headerLine: string, alignLine: string, bodyLines: string) => {
+    const header = headerLine.split('|').map((cell: string, i: number, arr: string[]) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1);
+    const rows = bodyLines.trim().split('\n').map((row: string) => row.split('|').map((cell: string, i: number, arr: string[]) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1));
+    // Формируем thead
+    const thead = `<thead><tr>${header.map((cell: string) => `<th class="px-3 py-2 bg-gray-100 text-gray-900 font-semibold border border-gray-200">${cell}</th>`).join('')}</tr></thead>`;
+    // Формируем tbody
+    const tbody = `<tbody>${rows.map((row: string[]) => `<tr>${row.map((cell: string) => `<td class="px-3 py-2 border border-gray-200">${cell}</td>`).join('')}</tr>`).join('')}</tbody>`;
+    // Оборачиваем в table с адаптивным контейнером
+    return `<div class="overflow-x-auto my-6"><table class="min-w-full text-sm text-left border-collapse rounded-lg shadow-sm bg-white">${thead}${tbody}</table></div>`;
+  });
+}
+
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   
@@ -105,8 +120,8 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const titleMatch = articleContent.match(/^#\s+(.+)$/m)
   const title = titleMatch ? titleMatch[1] : slug
 
-  // Конвертируем markdown в HTML (простая версия)
-  const htmlContent = articleContent
+  // Сначала преобразуем markdown-таблицы в HTML-таблицы
+  let htmlContent = convertMarkdownTables(articleContent)
     .replace(/^#\s+(.+)$/m, '<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">$1</h1>')
     .replace(/^##\s+(.+)$/gm, '<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 mb-4">$1</h2>')
     .replace(/^###\s+(.+)$/gm, '<h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3">$1</h3>')
@@ -117,7 +132,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code>$1</code></pre>')
     .replace(/\n\n/g, '</p><p class="mb-4 text-gray-700 leading-relaxed">')
     .replace(/^\n/, '<p class="mb-4 text-gray-700 leading-relaxed">')
-    .replace(/\n$/, '</p>')
+    .replace(/\n$/, '</p>');
 
   return (
     <div className="min-h-screen bg-gray-50">
