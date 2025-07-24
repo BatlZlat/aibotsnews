@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Navigation } from './Navigation';
+import Navigation from './Navigation';
 
 export function Header() {
   return (

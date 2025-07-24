@@ -27,8 +27,8 @@ export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return params
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const { slug } = params
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
   
   // Ищем статью во всех категориях
   const articlesDir = path.join(process.cwd(), 'content/articles')
@@ -77,8 +77,8 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function Page({ params }: { params: { slug: string } }) {
-  const { slug } = params
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
   
   // Ищем статью во всех категориях
   const articlesDir = path.join(process.cwd(), 'content/articles')
