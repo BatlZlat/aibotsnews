@@ -1,30 +1,5 @@
-# Мета-данные для SEO
-
-## Заголовок страницы
-Microsoft Copilot vs Microsoft Copilot: Подробное сравнение 2025
-
-## Мета-описание
-Детальное сравнение Microsoft Copilot и Microsoft Copilot в 2025 году. Функции, цены, плюсы и минусы. Выберите лучший инструмент для ваших задач.
-
-## Ключевые слова
-сравнение, {tool1}, {tool2}, vs, 2025, AI
-
-## Тип контента
-comparisons
-
-## Open Graph теги
-og:title = Microsoft Copilot vs Microsoft Copilot: Подробное сравнение 2025
-og:description = Детальное сравнение Microsoft Copilot и Microsoft Copilot в 2025 году. Функции, цены, плюсы и минусы. Выберите лучший инструмент для ваших задач.
-og:type = article
-og:url = https://aibotsguide.com/articles/comparisons/github-copilot-vs-microsoft-copilot-comparison-2025-seo.html
-
-## Twitter Card теги
-twitter:card = summary_large_image
-twitter:title = Microsoft Copilot vs Microsoft Copilot: Подробное сравнение 2025
-twitter:description = Детальное сравнение Microsoft Copilot и Microsoft Copilot в 2025 году. Функции, цены, плюсы и минусы. Выберите лучший инструмент для ваших задач.
-
-## Дополнительные SEO теги
-robots = index, follow
-author = AI Bots Guide
-language = Russian
-revisit-after = 7 days
+{
+  "Microsoft Copilot vs Microsoft Copilot": "Подробное сравнение 2025",
+  "og": "url = https://aibotsguide.com/articles/comparisons/github-copilot-vs-microsoft-copilot-comparison-2025-seo.html",
+  "twitter": "description = Детальное сравнение Microsoft Copilot и Microsoft Copilot в 2025 году. Функции, цены, плюсы и минусы. Выберите лучший инструмент для ваших задач."
+}

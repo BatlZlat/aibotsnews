@@ -1,30 +1,5 @@
-# Мета-данные для SEO
-
-## Заголовок страницы
-Как использовать Grammarly AI в 2025 году: Полное руководство
-
-## Мета-описание
-Подробное руководство по использованию Grammarly AI в 2025 году. Пошаговые инструкции, советы экспертов и практические примеры для максимальной эффективности.
-
-## Ключевые слова
-Grammarly AI, руководство, инструкция, как использовать, 2025, AI, искусственный интеллект
-
-## Тип контента
-guides
-
-## Open Graph теги
-og:title = Как использовать Grammarly AI в 2025 году: Полное руководство
-og:description = Подробное руководство по использованию Grammarly AI в 2025 году. Пошаговые инструкции, советы экспертов и практические примеры для максимальной эффективности.
-og:type = article
-og:url = https://aibotsguide.com/articles/guides/how-to-use-grammarly-ai-effectively-2025-seo.html
-
-## Twitter Card теги
-twitter:card = summary_large_image
-twitter:title = Как использовать Grammarly AI в 2025 году: Полное руководство
-twitter:description = Подробное руководство по использованию Grammarly AI в 2025 году. Пошаговые инструкции, советы экспертов и практические примеры для максимальной эффективности.
-
-## Дополнительные SEO теги
-robots = index, follow
-author = AI Bots Guide
-language = Russian
-revisit-after = 7 days
+{
+  "Как использовать Grammarly AI в 2025 году": "Полное руководство",
+  "og": "url = https://aibotsguide.com/articles/guides/how-to-use-grammarly-ai-effectively-2025-seo.html",
+  "twitter": "description = Подробное руководство по использованию Grammarly AI в 2025 году. Пошаговые инструкции, советы экспертов и практические примеры для максимальной эффективности."
+}
