@@ -71,5 +71,100 @@ lsof -i :3000
 rm -rf node_modules package-lock.json && npm install
 ```
 
+## Настройка продакшн-сервера и деплой (Nginx, SSL, systemd)
+
+### 1. Конфигурация Nginx для aibotsnews.ru
+
+- Создайте конфиг-файл:
+  ```bash
+  nano /etc/nginx/sites-available/aibotsnews.ru
+  ```
+- Пример конфига (замените порт, если нужно):
+  ```nginx
+  server {
+      listen 80;
+      server_name aibotsnews.ru www.aibotsnews.ru;
+
+      location / {
+          proxy_pass http://127.0.0.1:3000;
+          proxy_set_header Host $host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto $scheme;
+      }
+  }
+  ```
+- Активируйте сайт:
+  ```bash
+  ln -s /etc/nginx/sites-available/aibotsnews.ru /etc/nginx/sites-enabled/
+  nginx -t
+  systemctl reload nginx
+  ```
+
+### 2. Получение и включение бесплатного SSL-сертификата (Let's Encrypt)
+
+- Установите certbot:
+  ```bash
+  apt update
+  apt install certbot python3-certbot-nginx
+  ```
+- Получите сертификат и включите HTTPS:
+  ```bash
+  certbot --nginx -d aibotsnews.ru -d www.aibotsnews.ru
+  ```
+- Certbot автоматически добавит SSL-конфиг и перезапустит Nginx.
+
+### 3. Автоматическое продление SSL
+
+- Certbot настраивает автоматическое продление через systemd timer или cron.
+- Проверить статус можно так:
+  ```bash
+  systemctl list-timers | grep certbot
+  certbot renew --dry-run
+  ```
+
+### 4. Автозапуск Next.js приложения (systemd)
+
+- Создайте unit-файл systemd:
+  ```bash
+  nano /etc/systemd/system/aibotsnews.service
+  ```
+- Пример содержимого:
+  ```ini
+  [Unit]
+  Description=AI Bots News Next.js App
+  After=network.target
+
+  [Service]
+  Type=simple
+  User=root
+  WorkingDirectory=/root/project/Landing/AI-bots
+  Environment=NODE_ENV=production
+  Environment=PORT=3000
+  ExecStart=/usr/bin/npm run start
+  Restart=always
+  RestartSec=10
+
+  [Install]
+  WantedBy=multi-user.target
+  ```
+- Включите и запустите сервис:
+  ```bash
+  systemctl daemon-reload
+  systemctl enable aibotsnews.service
+  systemctl start aibotsnews.service
+  systemctl status aibotsnews.service
+  ```
+
+---
+
+**Результат:**
+- Сайт aibotsnews.ru доступен по HTTPS с валидным SSL-сертификатом.
+- Next.js приложение автоматически запускается после перезагрузки сервера.
+- Nginx проксирует запросы к приложению и завершает SSL.
+- Сертификаты SSL продлеваются автоматически.
+
+Если нужно добавить ещё проекты — повторите шаги с новыми конфигами и портами.
+
 ---
 **Полная документация:** `docs/project-setup.md` 
