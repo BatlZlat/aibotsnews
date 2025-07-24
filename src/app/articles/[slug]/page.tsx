@@ -121,7 +121,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   const title = titleMatch ? titleMatch[1] : slug
 
   // Сначала преобразуем markdown-таблицы в HTML-таблицы
-  let htmlContent = convertMarkdownTables(articleContent)
+  const htmlContent = convertMarkdownTables(articleContent)
     .replace(/^#\s+(.+)$/m, '<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">$1</h1>')
     .replace(/^##\s+(.+)$/gm, '<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 mb-4">$1</h2>')
     .replace(/^###\s+(.+)$/gm, '<h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3">$1</h3>')
