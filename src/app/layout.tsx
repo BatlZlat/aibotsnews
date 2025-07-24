@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
+import Head from 'next/head';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -56,51 +57,56 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
-      <head>
-        {/* Schema.org structured data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              "name": "ИИ Боты 2025",
-              "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
-              "url": "https://aibotsguide.com",
-              "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://aibotsguide.com/search?q={search_term_string}",
-                "query-input": "required name=search_term_string"
-              }
-            })
-          }}
-        />
-        
-        {/* Additional meta tags */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#2563eb" />
-        <meta name="msapplication-TileColor" content="#2563eb" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="ИИ Боты 2025" />
-        
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Favicon */}
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        
-        {/* Manifest */}
-        <link rel="manifest" href="/manifest.json" />
-      </head>
-      <body className={inter.className}>
-        <Navigation />
-        <main>{children}</main>
-      </body>
-    </html>
+    <>
+      <Head>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <html lang="ru">
+        <head>
+          {/* Schema.org structured data */}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                "name": "ИИ Боты 2025",
+                "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
+                "url": "https://aibotsguide.com",
+                "potentialAction": {
+                  "@type": "SearchAction",
+                  "target": "https://aibotsguide.com/search?q={search_term_string}",
+                  "query-input": "required name=search_term_string"
+                }
+              })
+            }}
+          />
+          
+          {/* Additional meta tags */}
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#2563eb" />
+          <meta name="msapplication-TileColor" content="#2563eb" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="apple-mobile-web-app-title" content="ИИ Боты 2025" />
+          
+          {/* Preconnect to external domains */}
+          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          
+          {/* Favicon */}
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="icon" href="/icon.svg" type="image/svg+xml" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+          
+          {/* Manifest */}
+          <link rel="manifest" href="/manifest.json" />
+        </head>
+        <body className={inter.className}>
+          <Navigation />
+          <main>{children}</main>
+        </body>
+      </html>
+    </>
   );
 }
