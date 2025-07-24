@@ -60,6 +60,18 @@ export default function RootLayout({
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W44P66H5GP"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-W44P66H5GP');
+            `,
+          }}
+        />
       </Head>
       <html lang="ru">
         <head>
