@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Head from 'next/head';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -72,25 +73,27 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Yandex.Metrika counter */}
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-              ym(103475212, "init", {
-                   clickmap:true,
-                   trackLinks:true,
-                   accurateTrackBounce:true,
-                   webvisor:true
-              });
-            `,
-          }}
-        />
+        {/* Удаляем старую вставку Метрики */}
       </Head>
+      {/* Альтернативная вставка Яндекс.Метрики через next/script */}
+      <Script
+        id="yandex-metrika"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(103475212, "init", {
+                 clickmap:true,
+                 trackLinks:true,
+                 accurateTrackBounce:true,
+                 webvisor:true
+            });
+          `,
+        }}
+      />
       <noscript>
         <div>
           <img src="https://mc.yandex.ru/watch/103475212" style={{ position: 'absolute', left: '-9999px' }} alt="" />
