@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
     description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году.',
     type: 'website',
-    url: 'https://aibotsguide.com',
+    url: process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
   },
 }
 

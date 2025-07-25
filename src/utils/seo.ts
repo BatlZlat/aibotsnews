@@ -1,6 +1,6 @@
 import { SEOData, PageMetadata } from '@/types';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}` || 'https://your-domain.com';
+const baseUrl = process.env.EXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}` || 'https://aibotsnews.ru';
 
 /**
  * Генерирует метаданные для страницы
@@ -102,7 +102,7 @@ export function generateBreadcrumbStructuredData(breadcrumbs: Array<{ title: str
       '@type': 'ListItem',
       position: index + 1,
       name: crumb.title,
-      item: `https://your-domain.com${crumb.href}`,
+      item: `${baseUrl}${crumb.href}`,
     })),
   };
 }

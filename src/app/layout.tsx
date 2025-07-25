@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://aibotsguide.com'),
+  metadataBase: new URL(process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: 'website',
     locale: 'ru_RU',
-    url: 'https://aibotsguide.com',
+    url: process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
     title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
     description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году.',
     siteName: 'ИИ Боты 2025',
@@ -116,10 +116,10 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "ИИ Боты 2025",
                 "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
-                "url": "https://aibotsnews.ru",
+                "url": process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
                 "potentialAction": {
                   "@type": "SearchAction",
-                  "target": "https://aibotsnews.ru/search?q={search_term_string}",
+                  "target": `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/search?q={search_term_string}`,
                   "query-input": "required name=search_term_string"
                 }
               })

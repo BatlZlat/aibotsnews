@@ -74,7 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: title,
       description: metaData.description || `Подробная статья о ${title}`,
       type: 'article',
-      url: `https://aibotsguide.com/articles/${slug}`,
+      url: `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/articles/${slug}`,
     },
   }
 }
