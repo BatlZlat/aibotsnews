@@ -1,0 +1,57 @@
+name: Deploy to Production
+
+on:
+  push:
+    tags:
+      - 'v*' # Деплой только по тегу
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Deploy via sshpass
+        env:
+          SSHPASS: ${{ secrets.SSH_PASS }}
+        run: |
+          sshpass -p "$SSHPASS" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} '
+            cd /root/project/Landing/AI-bots && \
+            git fetch --all --tags && \
+            git checkout ${{ github.ref_name }} && \
+            npm install && \
+            npm run build && \
+            systemctl restart aibotsnews.service && \
+            systemctl status aibotsnews.service
+          '
+
+      - name: Notify Telegram (success)
+        if: success()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.ADMIN_IDS }} \
+            -d text="✅ Деплой по тегу ${{ github.ref_name }} завершён успешно!"
+
+      - name: Notify Telegram (failure)
+        if: failure()
+        run: |
+          curl -s -X POST https://api.telegram.org/bot${{ secrets.TELEGRAM_TOKEN }}/sendMessage \
+            -d chat_id=${{ secrets.ADMIN_IDS }} \
+            -d text="❌ Ошибка деплоя по тегу ${{ github.ref_name }}. Проверь логи GitHub Actions!"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
