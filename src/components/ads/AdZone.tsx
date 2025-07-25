@@ -1,8 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { getAdZonesByPosition, shouldShowAds } from '@/utils/ads';
-import Script from 'next/script';
+import { shouldShowAds } from '@/utils/ads';
 
 interface AdZoneProps {
   zoneId: string;
