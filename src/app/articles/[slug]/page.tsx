@@ -5,7 +5,6 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
-import Head from 'next/head';
 import { generateArticleStructuredData, generateBreadcrumbStructuredData } from '@/utils/seo';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -38,13 +37,15 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   
   let articleContent = ''
   let metaData: { description?: string; keywords?: string; [key: string]: unknown } = {}
+  let category = ''
   
-  for (const category of categories) {
-    const articlePath = path.join(articlesDir, category, `${slug}.md`)
-    const metaPath = path.join(articlesDir, category, `${slug}.meta`)
+  for (const cat of categories) {
+    const articlePath = path.join(articlesDir, cat, `${slug}.md`)
+    const metaPath = path.join(articlesDir, cat, `${slug}.meta`)
     
     if (fs.existsSync(articlePath)) {
       articleContent = fs.readFileSync(articlePath, 'utf-8')
+      category = cat
       
       if (fs.existsSync(metaPath)) {
         const metaContent = fs.readFileSync(metaPath, 'utf-8')
@@ -66,15 +67,40 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const titleMatch = articleContent.match(/^#\s+(.+)$/m)
   const title = titleMatch ? titleMatch[1] : slug
 
+  // Проверка metaData на валидность
+  function safeMeta(meta: Record<string, unknown> | undefined, key: string, fallback: string = ''): string {
+    return (meta && typeof meta[key] === 'string' && meta[key].trim() !== '') ? meta[key] as string : fallback;
+  }
+
   return {
     title: `${title} | ИИ Боты 2025`,
-    description: metaData.description || `Подробная статья о ${title}`,
-    keywords: metaData.keywords || 'ИИ бот, искусственный интеллект, AI',
+    description: safeMeta(metaData, 'description', `Подробная статья о ${title}`),
+    keywords: safeMeta(metaData, 'keywords', 'ИИ бот, искусственный интеллект, AI'),
     openGraph: {
       title: title,
-      description: metaData.description || `Подробная статья о ${title}`,
+      description: safeMeta(metaData, 'description', `Подробная статья о ${title}`),
       type: 'article',
       url: `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/articles/${slug}`,
+      images: [{
+        url: safeMeta(metaData, 'ogImage', `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/default-image.png`),
+        width: 1200,
+        height: 630,
+        alt: title,
+      }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: title,
+      description: safeMeta(metaData, 'description', `Подробная статья о ${title}`),
+    },
+    alternates: {
+      canonical: `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/articles/${slug}`,
+    },
+    other: {
+      'article:published_time': safeMeta(metaData, 'datePublished', new Date().toISOString()),
+      'article:modified_time': safeMeta(metaData, 'dateModified', new Date().toISOString()),
+      'article:author': 'ИИ Боты 2025',
+      'article:section': category.charAt(0).toUpperCase() + category.slice(1),
     },
   }
 }
@@ -82,9 +108,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // Улучшенная функция для преобразования markdown-таблиц в HTML-таблицы
 function convertMarkdownTables(md: string): string {
   // Ищем все таблицы по паттерну: строка с |, затем строка-разделитель, затем >=1 строка с |
-  return md.replace(/((?:^|\n)(\|[^\n]+\|)[ \t]*\n(\|[ \t\-:|]+\|)[ \t]*\n((?:\|[^\n]+\|[ \t]*\n?)+))/gm, (match: string, _table: string, headerLine: string, alignLine: string, bodyLines: string) => {
-    const header = headerLine.split('|').map((cell: string, i: number, arr: string[]) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1);
-    const rows = bodyLines.trim().split('\n').map((row: string) => row.split('|').map((cell: string, i: number, arr: string[]) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1));
+  return md.replace(/((?:^|\n)(\|[^\n]+\|)[ \t]*\n(\|[ \t\-:|]+\|)[ \t]*\n((?:\|[^\n]+\|[ \t]*\n?)+))/gm, (match: string, _table: string, headerLine: string, _alignLine: string, bodyLines: string) => {
+    const header = headerLine.split('|').map((cell: string) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1);
+    const rows = bodyLines.trim().split('\n').map((row: string) => row.split('|').map((cell: string) => cell.trim()).filter((cell: string, i: number, arr: string[]) => i !== 0 && i !== arr.length - 1));
     // Формируем thead
     const thead = `<thead><tr>${header.map((cell: string) => `<th class="px-3 py-2 bg-gray-100 text-gray-900 font-semibold border border-gray-200">${cell}</th>`).join('')}</tr></thead>`;
     // Формируем tbody
@@ -132,9 +158,10 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     .replace(/\*(.+?)\*/g, '<em class="italic">$1</em>')
     .replace(/`(.+?)`/g, '<code class="bg-gray-100 px-2 py-1 rounded text-sm">$1</code>')
     .replace(/```([\s\S]*?)```/g, '<pre class="bg-gray-100 p-4 rounded-lg overflow-x-auto my-4"><code>$1</code></pre>')
-    .replace(/\n\n/g, '</p><p class="mb-4 text-gray-700 leading-relaxed">')
-    .replace(/^\n/, '<p class="mb-4 text-gray-700 leading-relaxed">')
-    .replace(/\n$/, '</p>');
+    // Правильная обработка абзацев - оборачиваем в <p> только текст, который не является заголовками или другими блоками
+    .replace(/(?<!<[^>]*>)([^<>\n]+(?:\n[^<>\n]+)*?)(?=\n\n|\n#|\n##|\n###|\n####|\n```|$)/g, '<p class="mb-4 text-gray-700 leading-relaxed">$1</p>')
+    .replace(/\n\n/g, '')
+    .replace(/<p[^>]*><\/p>/g, ''); // Удаляем пустые параграфы
 
   // Извлекаем метаданные для structured data
   let metaData: { description?: string; keywords?: string; [key: string]: unknown } = {}
@@ -148,36 +175,42 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     }
   }
 
+  // Проверка metaData на валидность
+  function safeMeta(meta: Record<string, unknown> | undefined, key: string, fallback: string = ''): string {
+    return (meta && typeof meta[key] === 'string' && meta[key].trim() !== '') ? meta[key] as string : fallback;
+  }
+
   // Формируем breadcrumbs
   const breadcrumbs = [
     { title: 'Главная', href: '/' },
     { title: category.charAt(0).toUpperCase() + category.slice(1), href: `/${category}` },
     { title, href: `/articles/${slug}` }
   ];
+  
   // Формируем structured data
   const articleStructuredData = generateArticleStructuredData({
     title,
-    excerpt: metaData.description || '',
-    featuredImage: metaData.ogImage || '',
+    excerpt: safeMeta(metaData, 'description', `Статья о ${title}`),
+    featuredImage: safeMeta(metaData, 'ogImage', `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/default-image.png`),
     author: 'ИИ Боты',
-    publishedAt: metaData.datePublished || new Date().toISOString(),
-    updatedAt: metaData.dateModified || new Date().toISOString(),
+    publishedAt: safeMeta(metaData, 'datePublished', new Date().toISOString()),
+    updatedAt: safeMeta(metaData, 'dateModified', new Date().toISOString()),
     slug
   });
   const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
 
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
-        />
-      </Head>
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+      />
+      
       <div className="min-h-screen bg-gray-50">
         {/* Top Ad Zone */}
         <div className="px-4 sm:px-6 lg:px-8 py-4">
