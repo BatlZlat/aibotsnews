@@ -107,10 +107,10 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "ИИ Боты 2025",
                 "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
-                "url": "https://aibotsguide.com",
+                "url": "https://aibotsnews.ru",
                 "potentialAction": {
                   "@type": "SearchAction",
-                  "target": "https://aibotsguide.com/search?q={search_term_string}",
+                  "target": "https://aibotsnews.ru/search?q={search_term_string}",
                   "query-input": "required name=search_term_string"
                 }
               })
