@@ -61,21 +61,27 @@ export default function RootLayout({
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W44P66H5GP"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-W44P66H5GP');
-            `,
-          }}
-        />
-        {/* Удаляем старую вставку Метрики */}
+        {/* Удаляем старую вставку Google Analytics */}
       </Head>
-      {/* Альтернативная вставка Яндекс.Метрики через next/script */}
+      {/* Альтернативная вставка Google Analytics через next/script */}
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-CYCQXM29N8"
+      />
+      <Script
+        id="google-analytics-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CYCQXM29N8');
+          `,
+        }}
+      />
+      {/* Альтернативная вставка Яндекс.Метрики через next/script (оставляем как есть) */}
       <Script
         id="yandex-metrika"
         strategy="afterInteractive"
