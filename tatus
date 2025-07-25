@@ -1,4 +1,112 @@
-[33mcommit 85ed8f68814463222d98a8d02257d6c9cc9e7aa0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+[33mcommit 871792f166f040f2d3b8fa950cfe263448ac0464[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 855b493 a2e568b
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 19:06:04 2025 +0500
+
+    Merge pull request #9 from BatlZlat/develop
+    
+    v1.0.5: SEO, Метрика и Google Analytics — современная интеграция
+
+[33mcommit a2e568b1062d7b6add68d894d61eeda945acf7b4[m[33m ([m[1;31morigin/develop[m[33m)[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 18:51:12 2025 +0500
+
+    v1.0.5 seo: актуальный sitemap.xml, валидная structured data (Article/Review/CollectionPage) для всех страниц, исправлен домен. Использовали современный метод next/script для вставки яндексметрики. Google Analytics (GA4) подключён через современный компонент next/script с новым идентификатором потока данных
+
+[33mcommit edfda0cbd010fef7e12f79c8e9b8314e34a271ad[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 18:13:23 2025 +0500
+
+    v1.0.5 seo: актуальный sitemap.xml, валидная structured data (Article/Review/CollectionPage) для всех страниц, исправлен домен. Использовали современный метод next/script для вставки яндексметрики
+
+[33mcommit 946daad1f4af45cdc8c5cc3679e96d4ee04f546f[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 17:16:09 2025 +0500
+
+    v1.0.5 seo: актуальный sitemap.xml, валидная structured data (Article/Review/CollectionPage) для всех страниц, исправлен домен
+
+[33mcommit 90c712d80e7e05a5085532e0fb767032bfffd8f3[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 17:08:49 2025 +0500
+
+    v1.0.5 Исправлен sitemap.xml; Установлена разметка но не везде.
+
+[33mcommit 06b87b83a3d361b8c2db7d15436646328d852595[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 16:36:59 2025 +0500
+
+    v1.0.5 Исправлен sitemap.xml
+
+[33mcommit 855b4937619d00825f51736049779c60f1a03554[m[33m ([m[1;33mtag: [m[1;33mv1.0.4.2[m[33m)[m
+Merge: 523b732 e56565d
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 03:10:54 2025 +0500
+
+    Merge pull request #8 from BatlZlat/develop
+    
+    v1.0.4.2 добавлен код яндекс метрики и гугл аналитики
+
+[33mcommit e56565d8853a71c9dea4647aeaffb01162eb0ecc[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 03:06:41 2025 +0500
+
+    v1.0.4.2 Исправлен https://aibotsnews.ru/sitemap.xml. Код Google Analytics (GA4) с Measurement ID. од Яндекс.Метрики с номером счётчика 103475212 добавлен в layout.tsx
+
+[33mcommit ac06439db1aef4fd6964f613757e03a9a31444ba[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 02:53:47 2025 +0500
+
+    v1.0.4.2 Исправлен https://aibotsnews.ru/sitemap.xml. Код Google Analytics (GA4) с Measurement ID
+
+[33mcommit a077542c4c6e04718fce973157613fc58156e38f[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 02:24:29 2025 +0500
+
+    v1.0.4.2 Исправлен https://aibotsnews.ru/sitemap.xml
+
+[33mcommit 523b732b17cf4628c7e4905a4405340b009d2ba6[m[33m ([m[1;33mtag: [m[1;33mv1.0.4.1[m[33m)[m
+Merge: c8cfd7e fd15200
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 01:57:10 2025 +0500
+
+    Merge pull request #7 from BatlZlat/develop
+    
+    1.0.4.1 фавиконки отображаются. Таблицы в текстах корректно отображаю…
+
+[33mcommit fd15200d5bec863c5f9d8451eee25f197dca6b02[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 01:55:09 2025 +0500
+
+    1.0.4.1 фавиконки отображаются. Таблицы в текстах корректно отображаются. Создан HTML Подтверждение прав вебмастер. В robots.txt указал верный домен. ИСПРАВЛЕН ЛИТЕР
+
+[33mcommit c8cfd7ec244cc93a7935bdfb60807f9dc6b189b6[m[33m ([m[1;33mtag: [m[1;33mv1.0.4[m[33m)[m
+Merge: 85ed8f6 0b22f7e
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 01:16:56 2025 +0500
+
+    Merge pull request #6 from BatlZlat/develop
+    
+    v1.0.4 стабильная версия, для тестов рекламы
+
+[33mcommit 0b22f7e6bef9dfaa0d2ec8a79d7c7be9aad91a35[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 01:12:57 2025 +0500
+
+    v1.0.4 фавиконки отображаются. Таблицы в текстах корректно отображаются. Создан HTML Подтверждение прав вебмастер. В robots.txt указал верный домен
+
+[33mcommit 410db0b329c7567f60b279bd953bc997742f0af7[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 00:56:05 2025 +0500
+
+    v1.0.4 фавиконки отображаются. Таблицы в текстах корректно отображаются. Создан HTML Подтверждение прав вебмастер
+
+[33mcommit 987e28ec644b8897d84ba7eca8c9f14a67c6218e[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Fri Jul 25 00:42:16 2025 +0500
+
+    v1.0.4 фавиконки отображаются. Таблицы в текстах корректно отображаются
+
+[33mcommit 85ed8f68814463222d98a8d02257d6c9cc9e7aa0[m[33m ([m[1;33mtag: [m[1;33mv1.0.3.1[m[33m)[m
 Merge: dc6d29a fd5b81d
 Author: BatlZlat <batl.zlat87@gmail.com>
 Date:   Thu Jul 24 20:23:35 2025 +0500
@@ -7,7 +115,7 @@ Date:   Thu Jul 24 20:23:35 2025 +0500
     
     v1.0.3.1 исправление favicon
 
-[33mcommit fd5b81d1d5a3055fd7a7ab49cce513b2b09edd1e[m[33m ([m[1;31morigin/develop[m[33m)[m
+[33mcommit fd5b81d1d5a3055fd7a7ab49cce513b2b09edd1e[m
 Author: Batl-zlat <batl.zlat87@gmail.com>
 Date:   Thu Jul 24 20:21:31 2025 +0500
 
