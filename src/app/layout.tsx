@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Head from 'next/head';
+import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -60,37 +61,45 @@ export default function RootLayout({
     <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W44P66H5GP"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-W44P66H5GP');
-            `,
-          }}
-        />
-        {/* Yandex.Metrika counter */}
-        <script
-          type="text/javascript"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-              m[i].l=1*new Date();
-              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-              (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-              ym(103475212, "init", {
-                   clickmap:true,
-                   trackLinks:true,
-                   accurateTrackBounce:true,
-                   webvisor:true
-              });
-            `,
-          }}
-        />
+        {/* Удаляем старую вставку Google Analytics */}
       </Head>
+      {/* Альтернативная вставка Google Analytics через next/script */}
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-CYCQXM29N8"
+      />
+      <Script
+        id="google-analytics-init"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CYCQXM29N8');
+          `,
+        }}
+      />
+      {/* Альтернативная вставка Яндекс.Метрики через next/script (оставляем как есть) */}
+      <Script
+        id="yandex-metrika"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+            ym(103475212, "init", {
+                 clickmap:true,
+                 trackLinks:true,
+                 accurateTrackBounce:true,
+                 webvisor:true
+            });
+          `,
+        }}
+      />
       <noscript>
         <div>
           <img src="https://mc.yandex.ru/watch/103475212" style={{ position: 'absolute', left: '-9999px' }} alt="" />
@@ -107,10 +116,10 @@ export default function RootLayout({
                 "@type": "WebSite",
                 "name": "ИИ Боты 2025",
                 "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
-                "url": "https://aibotsguide.com",
+                "url": "https://aibotsnews.ru",
                 "potentialAction": {
                   "@type": "SearchAction",
-                  "target": "https://aibotsguide.com/search?q={search_term_string}",
+                  "target": "https://aibotsnews.ru/search?q={search_term_string}",
                   "query-input": "required name=search_term_string"
                 }
               })
