@@ -187,11 +187,13 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     { title, href: `/articles/${slug}` }
   ];
   
-  // Формируем structured data
+  // Формируем structured data с дополнительными проверками
+  const safeBaseUrl = process.env.EXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || (process.env.DOMEN_NAME ? `https://${process.env.DOMEN_NAME}` : 'https://aibotsnews.ru');
+  
   const articleStructuredData = generateArticleStructuredData({
     title,
     excerpt: safeMeta(metaData, 'description', `Статья о ${title}`),
-    featuredImage: safeMeta(metaData, 'ogImage', `${process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`}/default-image.png`),
+    featuredImage: safeMeta(metaData, 'ogImage', `${safeBaseUrl}/default-image.png`),
     author: 'ИИ Боты',
     publishedAt: safeMeta(metaData, 'datePublished', new Date().toISOString()),
     updatedAt: safeMeta(metaData, 'dateModified', new Date().toISOString()),
@@ -199,16 +201,22 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
   });
   const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
 
+  // Проверяем валидность structured data
+  const articleStructuredDataJson = JSON.stringify(articleStructuredData);
+  const breadcrumbStructuredDataJson = JSON.stringify(breadcrumbStructuredData);
+  
+
+  
   return (
     <>
       {/* Structured Data */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: articleStructuredDataJson }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbStructuredData) }}
+        dangerouslySetInnerHTML={{ __html: breadcrumbStructuredDataJson }}
       />
       
       <div className="min-h-screen bg-gray-50">
