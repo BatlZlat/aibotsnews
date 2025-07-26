@@ -1,4 +1,3 @@
-
 # Прорывы в ИИ-генерации изображений: что нового в 2025 году
 
 *Обновлено: Июль 2025*
@@ -174,63 +173,4 @@ Adobe представил обновленную версию с фокусом
 
 ---
 
-*Источник: Анализ рынка ИИ-генерации изображений, июль 2025* 
-
-
-<!-- FAQ Schema -->
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {{
-      "@type": "Question",
-      "name": "What are the best AI tools in 2025?",
-      "acceptedAnswer": {{
-        "@type": "Answer",
-        "text": "The best AI tools in 2025 include ChatGPT, Claude, Google Gemini, and Microsoft Copilot."
-      }}
-    }},
-    {{
-      "@type": "Question", 
-      "name": "How to use AI tools effectively?",
-      "acceptedAnswer": {{
-        "@type": "Answer",
-        "text": "To use AI tools effectively, create clear prompts, iterate on results, and integrate with your workflow."
-      }}
-    }}
-  ]
-}}
-</script>
-
-<!-- Breadcrumb Schema -->
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://aibotsguide.com"
-    }},
-    {{
-      "@type": "ListItem", 
-      "position": 2,
-      "name": "AI Tools",
-      "item": "https://aibotsguide.com/tools"
-    }},
-    {{
-      "@type": "ListItem",
-      "position": 3, 
-      "name": "Guides",
-      "item": "https://aibotsguide.com/guides"
-    }}
-  ]
-}}
-</script>
-
-
-
-<!-- SEO Keywords: создание контента, GitHub Copilot, улучшение качества, ИИ бот, Google Bard, автоматизация задач, Notion AI, AI помощник, повышение продуктивности, Claude, машинное обучение, исследования, Perplexity AI, примеры, маркетинг, ChatGPT, Grammarly AI, дизайн, анализ данных, глубокое обучение -->
+*Источник: Анализ рынка ИИ-генерации изображений, июль 2025*
