@@ -278,6 +278,13 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Footer Ad Zone */}
+        <div className="px-4 sm:px-6 lg:px-8 py-8">
+          <div className="max-w-7xl mx-auto">
+            <AdZone zoneId="footer-banner" className="mb-6" />
+          </div>
+        </div>
+
         {/* Footer */}
         <footer className="bg-gray-900 text-white py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">

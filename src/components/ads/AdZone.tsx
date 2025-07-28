@@ -22,6 +22,7 @@ declare global {
 }
 
 const RSYA_BLOCKS: Record<string, { blockId: string; renderTo: string }> = {
+  // Основные блоки РСЯ (правильные ID)
   'header-banner': {
     blockId: 'R-A-16407258-1',
     renderTo: 'yandex_rtb_R-A-16407258-1',
@@ -38,82 +39,84 @@ const RSYA_BLOCKS: Record<string, { blockId: string; renderTo: string }> = {
     blockId: 'R-A-16407258-4',
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
-  // Добавляем недостающие блоки
+  
+  // Алиасы для совместимости (используют правильные blockId)
   'top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'sidebar-banner': {
-    blockId: 'R-A-16407258-2',
+    blockId: 'R-A-16407258-2', // sidebar-top
     renderTo: 'yandex_rtb_R-A-16407258-2',
   },
-  // Блоки для разных страниц
+  
+  // Блоки для разных страниц (используют правильные blockId)
   'article-top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'article-middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'article-bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'reviews-top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'reviews-middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'reviews-bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'news-top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'news-middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'news-bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'comparisons-top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'comparisons-middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'comparisons-bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'ratings-top-banner': {
-    blockId: 'R-A-16407258-1',
+    blockId: 'R-A-16407258-1', // header-banner
     renderTo: 'yandex_rtb_R-A-16407258-1',
   },
   'ratings-middle-banner': {
-    blockId: 'R-A-16407258-1',
-    renderTo: 'yandex_rtb_R-A-16407258-1',
+    blockId: 'R-A-16407258-2', // sidebar-top (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-2',
   },
   'ratings-bottom-banner': {
-    blockId: 'R-A-16407258-4',
+    blockId: 'R-A-16407258-4', // footer-banner
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'guides-top-banner': {
