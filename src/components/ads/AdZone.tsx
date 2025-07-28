@@ -38,11 +38,102 @@ const RSYA_BLOCKS: Record<string, { blockId: string; renderTo: string }> = {
     blockId: 'R-A-16407258-4',
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
+  // Добавляем недостающие блоки
+  'top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'sidebar-banner': {
+    blockId: 'R-A-16407258-2',
+    renderTo: 'yandex_rtb_R-A-16407258-2',
+  },
+  // Блоки для разных страниц
+  'article-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'article-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'article-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'reviews-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'reviews-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'reviews-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'news-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'news-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'news-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'comparisons-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'comparisons-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'comparisons-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'ratings-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'ratings-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'ratings-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
+  'guides-top-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'guides-middle-banner': {
+    blockId: 'R-A-16407258-1',
+    renderTo: 'yandex_rtb_R-A-16407258-1',
+  },
+  'guides-bottom-banner': {
+    blockId: 'R-A-16407258-4',
+    renderTo: 'yandex_rtb_R-A-16407258-4',
+  },
 };
 
 export function AdZone({ zoneId, className = '' }: AdZoneProps) {
   useEffect(() => {
-    if (!shouldShowAds()) return;
+    // Временно разрешаем показ рекламы даже в development для тестирования
+    // if (!shouldShowAds()) return;
 
     if (zoneId in RSYA_BLOCKS) {
       // Проверяем, что скрипт уже загружен
@@ -53,15 +144,21 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
         script.async = true;
         document.head.appendChild(script);
       }
+      
       // Инициализация блока после загрузки скрипта
       window.yaContextCb = window.yaContextCb || [];
       const { blockId, renderTo } = RSYA_BLOCKS[zoneId];
+      
       window.yaContextCb.push(() => {
         if (window.Ya && window.Ya.Context && window.Ya.Context.AdvManager) {
-          window.Ya.Context.AdvManager.render({
-            blockId,
-            renderTo,
-          });
+          try {
+            window.Ya.Context.AdvManager.render({
+              blockId,
+              renderTo,
+            });
+          } catch (error) {
+            console.log(`РСЯ блок ${blockId} не может загрузиться на localhost (это нормально для разработки)`);
+          }
         }
       });
       return;
@@ -71,20 +168,31 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
     const container = document.getElementById(zoneId);
     if (container && !container.innerHTML) {
       container.innerHTML = `
-        <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 sm:p-4 text-center text-gray-600 text-xs sm:text-sm border border-blue-200">
-          <div class="mb-1 sm:mb-2 font-medium">📢 Рекламный блок</div>
-          <div class="text-xs opacity-75">${zoneId}</div>
-          <div class="mt-2 text-xs opacity-50">728x90 | 300x250 | 320x50</div>
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-3 sm:p-4 text-center text-gray-600 text-xs sm:text-sm border border-blue-200">
+          <div className="mb-1 sm:mb-2 font-medium">📢 Рекламный блок</div>
+          <div className="text-xs opacity-75">${zoneId}</div>
+          <div className="mt-2 text-xs opacity-50">728x90 | 300x250 | 320x50</div>
         </div>
       `;
     }
   }, [zoneId]);
 
   if (zoneId in RSYA_BLOCKS) {
-    const { renderTo } = RSYA_BLOCKS[zoneId];
+    const { renderTo, blockId } = RSYA_BLOCKS[zoneId];
+    const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+    
     return (
       <div className={`ad-zone w-full ${className}`}>
-        <div id={renderTo}></div>
+        <div id={renderTo} className="min-h-[90px] bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-3 sm:p-4 text-center text-gray-600 text-xs sm:text-sm border border-green-200">
+          <div className="mb-1 sm:mb-2 font-medium">📢 РСЯ блок</div>
+          <div className="text-xs opacity-75">{zoneId}</div>
+          <div className="mt-2 text-xs opacity-50">ID: {blockId}</div>
+          {isLocalhost && (
+            <div className="mt-1 text-xs text-orange-600">
+              ⚠️ На localhost показывается placeholder
+            </div>
+          )}
+        </div>
       </div>
     );
   }

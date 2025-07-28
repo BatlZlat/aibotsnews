@@ -136,8 +136,13 @@ export default function RootLayout({
                    clickmap:true,
                    trackLinks:true,
                    accurateTrackBounce:true,
-                   webvisor:true
+                   webvisor:true,
+                   trackHash:true,
+                   ut:false
               });
+              // Отладочная информация
+              console.log('Yandex Metrika initialized with counter: 103475212');
+              console.log('Current domain:', window.location.hostname);
             `,
           }}
         />
