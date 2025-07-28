@@ -1,4 +1,45 @@
-[33mcommit 6b22f8c6a4f57f3ffc1da7c02d5b9ba05b49152f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mdevelop[m[33m, [m[1;31morigin/master[m[33m)[m
+[33mcommit 4232e0532a147c84db43cf80119f01eebeff45d3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 6b22f8c 770295f
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 16:28:44 2025 +0500
+
+    Merge pull request #17 from BatlZlat/develop
+    
+    v1.0.11.1 - Решение проблем с рекламой, метрикой и унификация навигации.отладка сборки. Готов к релизу
+
+[33mcommit 770295ffdecc4e2006dd2907f96a14c02fe8db76[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 16:24:40 2025 +0500
+
+    v1.0.11.1 - Решение проблем с рекламой, метрикой и унификация навигации.отладка сборки. Готов к релизу
+
+[33mcommit a29fab711515963a841b14d743a66a85d341bfdb[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 16:17:56 2025 +0500
+
+    v1.0.11.1 - Решение проблем с рекламой, метрикой и унификация навигации.отладка сборки
+
+[33mcommit 96c3efb028cb32288784e8acc7a3558484534208[m
+Merge: cb9217b 25c6d22
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 15:59:04 2025 +0500
+
+    Merge branch 'master' into develop
+    v1.0.11 - Исправление ошибок сборки и полная готовность к продакшену
+
+[33mcommit 25c6d225ee7cf05f0662385093d853c388cc6f55[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 15:55:08 2025 +0500
+
+    v1.0.11 - Решение проблем с рекламой, метрикой и унификация навигации. Коммит для мастер.
+
+[33mcommit cb9217bdca14c7e8365d5024dcff8c49af9630ff[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Mon Jul 28 15:38:11 2025 +0500
+
+    v1.0.11 - Решение проблем с рекламой, метрикой и унификация навигации
+
+[33mcommit 6b22f8c6a4f57f3ffc1da7c02d5b9ba05b49152f[m
 Merge: 77e5599 1af1d68
 Author: BatlZlat <batl.zlat87@gmail.com>
 Date:   Mon Jul 28 15:35:50 2025 +0500
@@ -7,7 +48,7 @@ Date:   Mon Jul 28 15:35:50 2025 +0500
     
     v1.0.11 - Решение проблем с рекламой, метрикой и унификация навигации
 
-[33mcommit 1af1d68564b1839124be3b99dea98055b2d248b1[m[33m ([m[1;31morigin/develop[m[33m)[m
+[33mcommit 1af1d68564b1839124be3b99dea98055b2d248b1[m
 Author: Batl-zlat <batl.zlat87@gmail.com>
 Date:   Mon Jul 28 15:28:55 2025 +0500
 
@@ -25,7 +66,7 @@ Date:   Mon Jul 28 15:00:12 2025 +0500
 
     v1.0.11 Исправил рекламные блоки. Поправил яндекс счетчик
 
-[33mcommit 77e55999418a2f072a7e4cde33cd2bc4afb5c558[m[33m ([m[1;33mtag: [m[1;33mv1.0.10[m[33m, [m[1;32mmaster[m[33m)[m
+[33mcommit 77e55999418a2f072a7e4cde33cd2bc4afb5c558[m[33m ([m[1;33mtag: [m[1;33mv1.0.10[m[33m)[m
 Merge: e428409 b3d69a7
 Author: BatlZlat <batl.zlat87@gmail.com>
 Date:   Sat Jul 26 20:33:30 2025 +0500
