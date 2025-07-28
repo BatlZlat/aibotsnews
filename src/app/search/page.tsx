@@ -83,16 +83,17 @@ function searchArticles(query: string): SearchResult[] {
   return results;
 }
 
-export default function SearchPage({
+export default async function SearchPage({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: Promise<{ q?: string }>;
 }) {
-  const query = searchParams.q || '';
+  const params = await searchParams;
+  const query = params.q || '';
   const results = query ? searchArticles(query) : [];
 
   return (
-    <Layout showAds={true}>
+    <Layout>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-blue-50 to-indigo-100">
@@ -114,7 +115,7 @@ export default function SearchPage({
             {query && (
               <div className="mb-8">
                 <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
-                  Результаты поиска для "{query}"
+                  Результаты поиска для &quot;{query}&quot;
                 </h2>
                 <p className="text-gray-600">
                   Найдено {results.length} {results.length === 1 ? 'статья' : results.length < 5 ? 'статьи' : 'статей'}
@@ -141,7 +142,7 @@ export default function SearchPage({
                   Ничего не найдено
                 </h2>
                 <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-                  По вашему запросу "{query}" ничего не найдено. Попробуйте изменить поисковый запрос или просмотрите наши разделы:
+                  По вашему запросу &quot;{query}&quot; ничего не найдено. Попробуйте изменить поисковый запрос или просмотрите наши разделы:
                 </p>
                 <div className="flex flex-wrap justify-center gap-4">
                   <Link href="/guides" className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">

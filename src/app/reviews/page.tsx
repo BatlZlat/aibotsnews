@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import Head from 'next/head';
 import { generateReviewStructuredData } from '@/utils/seo';
+import Layout from '@/components/layout/Layout';
 
 function isValidDescription(paragraph: string, title: string): boolean {
   if (!paragraph) return false;
@@ -92,7 +93,7 @@ export default function ReviewsPage() {
   };
 
   return (
-    <>
+    <Layout>
       <Head>
         <script
           type="application/ld+json"
@@ -228,6 +229,6 @@ export default function ReviewsPage() {
           </div>
         </section>
       </div>
-    </>
+    </Layout>
   )
 } 
