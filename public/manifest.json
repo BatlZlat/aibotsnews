@@ -1,0 +1,29 @@
+{
+  "name": "ИИ Боты 2025",
+  "short_name": "ИИ Боты",
+  "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "16x16 32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "ru",
+  "dir": "ltr"
+} 

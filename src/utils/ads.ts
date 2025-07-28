@@ -122,10 +122,10 @@ export function shouldShowAds(): boolean {
     if (isBot) return false;
   }
 
-  // Проверка на режим разработки
-  if (process.env.NODE_ENV === 'development') {
-    return false;
-  }
+  // Временно разрешаем показ рекламы в режиме разработки для тестирования
+  // if (process.env.NODE_ENV === 'development') {
+  //   return false;
+  // }
 
   return true;
 }

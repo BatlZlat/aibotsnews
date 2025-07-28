@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -136,8 +135,13 @@ export default function RootLayout({
                    clickmap:true,
                    trackLinks:true,
                    accurateTrackBounce:true,
-                   webvisor:true
+                   webvisor:true,
+                   trackHash:true,
+                   ut:false
               });
+              // Отладочная информация
+              console.log('Yandex Metrika initialized with counter: 103475212');
+              console.log('Current domain:', window.location.hostname);
             `,
           }}
         />
@@ -147,7 +151,6 @@ export default function RootLayout({
           </div>
         </noscript>
         
-        <Navigation />
         <main>{children}</main>
       </body>
     </html>
