@@ -6,6 +6,7 @@ import fs from 'fs'
 import path from 'path'
 import Head from 'next/head';
 import { generateArticleStructuredData } from '@/utils/seo';
+import Layout from '@/components/layout/Layout';
 
 function isValidDescription(paragraph: string, title: string): boolean {
   if (!paragraph) return false;
@@ -83,7 +84,7 @@ export default function NewsPage() {
   };
 
   return (
-    <>
+    <Layout>
       <Head>
         <script
           type="application/ld+json"
@@ -209,6 +210,6 @@ export default function NewsPage() {
           </div>
         </section>
       </div>
-    </>
+    </Layout>
   )
 } 
