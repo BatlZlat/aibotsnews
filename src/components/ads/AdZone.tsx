@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useEffect } from 'react';
+import { shouldShowAds } from '@/utils/ads';
 
 interface AdZoneProps {
   zoneId: string;
@@ -131,8 +132,8 @@ const RSYA_BLOCKS: Record<string, { blockId: string; renderTo: string }> = {
 
 export function AdZone({ zoneId, className = '' }: AdZoneProps) {
   useEffect(() => {
-    // Временно разрешаем показ рекламы даже в development для тестирования
-    // if (!shouldShowAds()) return;
+    // Проверяем, нужно ли показывать рекламу
+    if (!shouldShowAds()) return;
 
     if (zoneId in RSYA_BLOCKS) {
       // Проверяем, что скрипт уже загружен
