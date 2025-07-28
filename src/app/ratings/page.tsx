@@ -89,7 +89,7 @@ export default function RatingsPage() {
   };
 
   return (
-    <Layout showAds={true}>
+    <Layout>
       <Head>
         <script
           type="application/ld+json"
@@ -122,7 +122,7 @@ export default function RatingsPage() {
         <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {ratings.map((rating, index) => (
+              {ratings.map((rating) => (
                 <div key={rating.slug} className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
                   <div className="flex items-center justify-between mb-4">
                     <span className="inline-block bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">

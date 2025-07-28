@@ -53,7 +53,7 @@ export default function HomePage() {
   const news = getArticles(newsDir, 4)
 
   return (
-    <Layout showAds={true}>
+    <Layout>
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
         {/* Hero Section */}
         <section className="relative py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">

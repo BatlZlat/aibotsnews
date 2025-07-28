@@ -1,16 +1,14 @@
 'use client'
 
 import { ReactNode } from 'react'
-import { AdZone } from '../ads/AdZone'
 import Navigation from './Navigation'
 import { Header } from './Header'
 
 interface LayoutProps {
   children: ReactNode
-  showAds?: boolean
 }
 
-export default function Layout({ children, showAds = true }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}

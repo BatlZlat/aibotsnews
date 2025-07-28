@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useEffect } from 'react';
-import { shouldShowAds } from '@/utils/ads';
 
 interface AdZoneProps {
   zoneId: string;
@@ -156,7 +155,7 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
               blockId,
               renderTo,
             });
-          } catch (error) {
+          } catch {
             console.log(`РСЯ блок ${blockId} не может загрузиться на localhost (это нормально для разработки)`);
           }
         }
