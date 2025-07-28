@@ -179,7 +179,6 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
 
   if (zoneId in RSYA_BLOCKS) {
     const { renderTo, blockId } = RSYA_BLOCKS[zoneId];
-    const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
     
     return (
       <div className={`ad-zone w-full ${className}`}>
@@ -187,11 +186,9 @@ export function AdZone({ zoneId, className = '' }: AdZoneProps) {
           <div className="mb-1 sm:mb-2 font-medium">📢 РСЯ блок</div>
           <div className="text-xs opacity-75">{zoneId}</div>
           <div className="mt-2 text-xs opacity-50">ID: {blockId}</div>
-          {isLocalhost && (
-            <div className="mt-1 text-xs text-orange-600">
-              ⚠️ На localhost показывается placeholder
-            </div>
-          )}
+          <div className="mt-1 text-xs text-orange-600">
+            ⚠️ На localhost показывается placeholder
+          </div>
         </div>
       </div>
     );

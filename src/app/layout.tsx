@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/layout/Navigation";
 import Script from 'next/script';
 
 const inter = Inter({ subsets: ["latin"] });
@@ -152,7 +151,6 @@ export default function RootLayout({
           </div>
         </noscript>
         
-        <Navigation />
         <main>{children}</main>
       </body>
     </html>
