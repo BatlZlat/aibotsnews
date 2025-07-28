@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Script from 'next/script';
-import Image from 'next/image';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -148,7 +147,7 @@ export default function RootLayout({
         />
         <noscript>
           <div>
-            <Image src="https://mc.yandex.ru/watch/103475212" style={{ position: 'absolute', left: '-9999px' }} alt="" />
+            <img src="https://mc.yandex.ru/watch/103475212" style={{ position: 'absolute', left: '-9999px' }} alt="" />
           </div>
         </noscript>
         
