@@ -54,8 +54,8 @@ const RSYA_BLOCKS: Record<string, { blockId: string; renderTo: string }> = {
     renderTo: 'yandex_rtb_R-A-16407258-4',
   },
   'sidebar-banner': {
-    blockId: 'R-A-16407258-2', // sidebar-top
-    renderTo: 'yandex_rtb_R-A-16407258-2',
+    blockId: 'R-A-16407258-3', // sidebar-bottom (уникальный!)
+    renderTo: 'yandex_rtb_R-A-16407258-3',
   },
   
   // Блоки для разных страниц (используют правильные blockId)
