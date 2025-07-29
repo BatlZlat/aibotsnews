@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Как выбрать ИИ бота для ваших задач: полное руководство",
+  "description": "*Обновлено: Июль 2025*",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/how-to-choose-ai-bot-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-how-to-choose-ai-bot-seo.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Как выбрать ИИ бота для ваших задач: полное руководство" />
+<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/how-to-choose-ai-bot-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-how-to-choose-ai-bot-seo.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Как выбрать ИИ бота для ваших задач: полное руководство" />
+<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-how-to-choose-ai-bot-seo.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Main",
+      "item": "https://aibotsnews.ru/main"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Как выбрать ИИ бота для ваших ...",
+      "item": "https://aibotsnews.ru/articles/how-to-choose-ai-bot-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: Как выбрать ИИ бота для ваших задач: полное руководство, ИИ боты, искусственный интеллект, AI, main -->
+
 # Как выбрать ИИ бота для ваших задач: полное руководство
 
 *Обновлено: Июль 2025*

@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Что такое ИИ боты в 2024 году: полное руководство",
+  "description": "*Обновлено: Июль 2025*",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/what-is-ai-bot-2024-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-what-is-ai-bot-2024-seo.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Что такое ИИ боты в 2024 году: полное руководство" />
+<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/what-is-ai-bot-2024-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-what-is-ai-bot-2024-seo.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Что такое ИИ боты в 2024 году: полное руководство" />
+<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-what-is-ai-bot-2024-seo.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Main",
+      "item": "https://aibotsnews.ru/main"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Что такое ИИ боты в 2024 году:...",
+      "item": "https://aibotsnews.ru/articles/what-is-ai-bot-2024-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: Что такое ИИ боты в 2024 году: полное руководство, ИИ боты, искусственный интеллект, AI, main -->
+
 # Что такое ИИ боты в 2024 году: полное руководство
 
 *Обновлено: Июль 2025*

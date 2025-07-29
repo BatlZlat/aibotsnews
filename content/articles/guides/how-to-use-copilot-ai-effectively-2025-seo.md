@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "headline": "Как эффективно использовать Microsoft Copilot AI в 2025 году: полное руководство",
+  "description": "Microsoft Copilot AI — это интеллектуальный ассистент, интегрированный в экосистему Microsoft, который помогает пользователям работать более эффективно с пом...",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/how-to-use-copilot-ai-effectively-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-how-to-use-copilot-ai-effectively-2025-seo.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Как эффективно использовать Microsoft Copilot AI в 2025 году: полное руководство" />
+<meta property="og:description" content="Microsoft Copilot AI — это интеллектуальный ассистент, интегрированный в экосистему Microsoft, который помогает пользователям работать более эффективно с пом..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/how-to-use-copilot-ai-effectively-2025-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-how-to-use-copilot-ai-effectively-2025-seo.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Как эффективно использовать Microsoft Copilot AI в 2025 году: полное руководство" />
+<meta name="twitter:description" content="Microsoft Copilot AI — это интеллектуальный ассистент, интегрированный в экосистему Microsoft, который помогает пользователям работать более эффективно с пом..." />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-how-to-use-copilot-ai-effectively-2025-seo.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://aibotsnews.ru/guides"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Как эффективно использовать Mi...",
+      "item": "https://aibotsnews.ru/articles/how-to-use-copilot-ai-effectively-2025-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: Как эффективно использовать Microsoft Copilot AI в 2025 году: полное руководство, ИИ боты, искусственный интеллект, AI, guides -->
+
 # Как эффективно использовать Microsoft Copilot AI в 2025 году: полное руководство
 
 ## Введение

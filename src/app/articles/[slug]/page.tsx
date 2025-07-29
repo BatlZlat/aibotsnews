@@ -73,7 +73,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${title} | ИИ Боты 2025`,
+    title: `${title} | ИИ Боты`,
     description: safeMeta(metaData, 'description', `Подробная статья о ${title}`),
     keywords: safeMeta(metaData, 'keywords', 'ИИ бот, искусственный интеллект, AI'),
     openGraph: {
@@ -99,7 +99,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     other: {
       'article:published_time': safeMeta(metaData, 'datePublished', new Date().toISOString()),
       'article:modified_time': safeMeta(metaData, 'dateModified', new Date().toISOString()),
-      'article:author': 'ИИ Боты 2025',
+      'article:author': 'ИИ Боты',
       'article:section': category.charAt(0).toUpperCase() + category.slice(1),
     },
   }
@@ -247,7 +247,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                 {title}
               </h1>
               <div className="flex items-center text-sm text-gray-500">
-                <span>ИИ Боты 2025</span>
+                <span>ИИ Боты</span>
                 <span className="mx-2">•</span>
                 <span>{new Date().toLocaleDateString('ru-RU')}</span>
               </div>

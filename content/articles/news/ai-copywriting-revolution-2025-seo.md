@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Революция в ИИ-копирайтинге: как технологии изменили контент-маркетинг в 2025 году",
+  "description": "Подробный обзор революции в ИИ-копирайтинге: новые технологии, инструменты и их влияние на контент-маркетинг в 2025 году.",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/ai-copywriting-revolution-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-ai-copywriting.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Революция в ИИ-копирайтинге: как технологии изменили контент-маркетинг в 2025 году" />
+<meta property="og:description" content="Подробный обзор революции в ИИ-копирайтинге: новые технологии, инструменты и их влияние на контент-маркетинг в 2025 году." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/ai-copywriting-revolution-2025-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-ai-copywriting.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Революция в ИИ-копирайтинге: как технологии изменили контент-маркетинг в 2025 году" />
+<meta name="twitter:description" content="Подробный обзор революции в ИИ-копирайтинге: новые технологии, инструменты и их влияние на контент-маркетинг в 2025 году." />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-ai-copywriting.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Новости",
+      "item": "https://aibotsnews.ru/news"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Революция в ИИ-копирайтинге",
+      "item": "https://aibotsnews.ru/articles/ai-copywriting-revolution-2025-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: ИИ копирайтинг, AI копирайтинг, революция копирайтинга, Jasper AI, Copy.ai, контент-маркетинг 2025 -->
+
 # Революция в ИИ-копирайтинге: как технологии изменили контент-маркетинг в 2025 году
 
 *Обновлено: Июль 2025*

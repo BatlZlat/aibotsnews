@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps) {
       
       {/* Защита авторских прав */}
       <div className="bg-gray-900 text-gray-400 text-xs text-center py-2 border-t border-gray-800">
-        © ИИ Боты 2025. Все права защищены. Копирование материалов сайта запрещено.
+        © ИИ Боты. Все права защищены. Копирование материалов сайта запрещено.
       </div>
     </div>
   )

@@ -7,14 +7,14 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: {
-    default: "ИИ Боты 2025: Лучшие AI инструменты и руководства",
-    template: "%s | ИИ Боты 2025"
+    default: "ИИ Боты: Лучшие AI инструменты и руководства",
+    template: "%s | ИИ Боты"
   },
-  description: "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году. ChatGPT, Claude, Midjourney и другие AI инструменты.",
-  keywords: "ИИ бот, искусственный интеллект, AI помощник, ChatGPT, Claude, Midjourney, 2025",
-  authors: [{ name: "ИИ Боты 2025" }],
-  creator: "ИИ Боты 2025",
-  publisher: "ИИ Боты 2025",
+  description: "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов. ChatGPT, Claude, Midjourney и другие AI инструменты.",
+  keywords: "ИИ бот, искусственный интеллект, AI помощник, ChatGPT, Claude, Midjourney",
+  authors: [{ name: "ИИ Боты" }],
+  creator: "ИИ Боты",
+  publisher: "ИИ Боты",
   formatDetection: {
     email: false,
     address: false,
@@ -28,14 +28,14 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'ru_RU',
     url: process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
-    title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
-    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году.',
-    siteName: 'ИИ Боты 2025',
+    title: 'ИИ Боты: Лучшие AI инструменты и руководства',
+    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов.',
+    siteName: 'ИИ Боты',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
-    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году.',
+    title: 'ИИ Боты: Лучшие AI инструменты и руководства',
+    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов.',
   },
   robots: {
     index: true,
@@ -59,7 +59,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'ИИ Боты 2025',
+    title: 'ИИ Боты',
   },
   other: {
     'msapplication-TileColor': '#2563eb',
@@ -85,8 +85,8 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "ИИ Боты 2025",
-              "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году",
+              "name": "ИИ Боты",
+              "description": "Подробные обзоры, рейтинги и руководства по использованию ИИ ботов",
               "url": process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
               "potentialAction": {
                 "@type": "SearchAction",

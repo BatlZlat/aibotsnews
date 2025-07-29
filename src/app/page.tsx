@@ -30,12 +30,12 @@ function getArticles(dir: string, max: number = 4) {
 }
 
 export const metadata: Metadata = {
-  title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
-  description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году. ChatGPT, Claude, Midjourney и другие AI инструменты.',
-  keywords: 'ИИ бот, искусственный интеллект, AI помощник, ChatGPT, Claude, Midjourney, 2025',
+  title: 'ИИ Боты: Лучшие AI инструменты и руководства',
+  description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов. ChatGPT, Claude, Midjourney и другие AI инструменты.',
+  keywords: 'ИИ бот, искусственный интеллект, AI помощник, ChatGPT, Claude, Midjourney',
   openGraph: {
-    title: 'ИИ Боты 2025: Лучшие AI инструменты и руководства',
-    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов в 2025 году.',
+    title: 'ИИ Боты: Лучшие AI инструменты и руководства',
+    description: 'Подробные обзоры, рейтинги и руководства по использованию ИИ ботов.',
     type: 'website',
     url: process.env.EXT_PUBLIC_SITE_URL || `https://${process.env.DOMEN_NAME}`,
   },
@@ -60,7 +60,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-center">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
-                ИИ Боты 2025
+                ИИ Боты
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-3xl mx-auto px-4">
                 Подробные обзоры, рейтинги и руководства по использованию искусственного интеллекта
@@ -89,6 +89,50 @@ export default function HomePage() {
             <AdZone zoneId="top-banner" className="mb-6" />
           </div>
         </div>
+
+        {/* Featured Article - ИИ Боты */}
+        <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-indigo-50">
+          <div className="max-w-7xl mx-auto">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="md:flex">
+                <div className="md:w-1/2 p-8 sm:p-12">
+                  <div className="mb-6">
+                    <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-full mb-4">
+                      Главная статья
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+                      ИИ Боты: что это такое и как они изменили наш мир
+                    </h2>
+                    <p className="text-lg text-gray-600 mb-6">
+                      Полное руководство по ИИ ботам: что это такое, как работают, где применяются и как выбрать подходящий ИИ бот для ваших задач.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3">
+                      <Link 
+                        href="/articles/ii-boty-seo" 
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors text-center"
+                      >
+                        Читать статью
+                      </Link>
+                      <Link 
+                        href="/guides" 
+                        className="bg-white hover:bg-gray-50 text-blue-600 border border-blue-600 px-6 py-3 rounded-lg font-semibold transition-colors text-center"
+                      >
+                        Все руководства
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+                <div className="md:w-1/2 bg-gradient-to-br from-blue-500 to-indigo-600 p-8 sm:p-12 flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <div className="text-6xl mb-4">🤖</div>
+                    <h3 className="text-xl font-semibold mb-2">ИИ Боты</h3>
+                    <p className="text-blue-100">Революция, которая уже здесь</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Featured Tools */}
         <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-white">
@@ -290,7 +334,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты 2025</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты</h3>
                 <p className="text-gray-400 text-sm sm:text-base">
                   Подробные обзоры и руководства по использованию искусственного интеллекта
                 </p>

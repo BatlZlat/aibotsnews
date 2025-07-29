@@ -27,7 +27,7 @@ function cleanText(text: string): string {
 }
 
 export const metadata: Metadata = {
-  title: 'Сравнения ИИ ботов | ИИ Боты 2025',
+  title: 'Сравнения ИИ ботов | ИИ Боты',
   description: 'Детальные сравнения популярных ИИ ботов: ChatGPT vs Claude, Midjourney vs DALL-E, GitHub Copilot vs Microsoft Copilot и других AI инструментов.',
   keywords: 'сравнения ИИ боты, ChatGPT vs Claude, Midjourney vs DALL-E, сравнение AI инструментов',
 }

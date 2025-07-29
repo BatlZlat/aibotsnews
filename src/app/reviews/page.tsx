@@ -31,7 +31,7 @@ function cleanText(text: string): string {
 }
 
 export const metadata: Metadata = {
-  title: 'Отзывы пользователей об ИИ ботах | ИИ Боты 2025',
+  title: 'Отзывы пользователей об ИИ ботах | ИИ Боты',
   description: 'Реальные отзывы пользователей о популярных ИИ ботах: ChatGPT, Claude, Midjourney, GitHub Copilot и других AI инструментах.',
   keywords: 'отзывы ИИ боты, отзывы ChatGPT, отзывы Claude, отзывы Midjourney, пользовательские отзывы',
 }
