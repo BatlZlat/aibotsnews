@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 export const metadata: Metadata = {
-  title: 'Поиск ИИ ботов | ИИ Боты 2025',
+  title: 'Поиск ИИ ботов | ИИ Боты',
   description: 'Поиск по статьям об ИИ ботах, руководствам, рейтингам и отзывам.',
   keywords: 'поиск ИИ боты, поиск AI инструменты, найти ИИ помощник',
 };
@@ -194,7 +194,7 @@ export default async function SearchPage({
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты 2025</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты</h3>
                 <p className="text-gray-400 text-sm sm:text-base">
                   Поиск и обзоры ИИ инструментов
                 </p>

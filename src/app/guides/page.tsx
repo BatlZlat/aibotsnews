@@ -29,7 +29,7 @@ function cleanText(text: string): string {
 }
 
 export const metadata: Metadata = {
-  title: 'Руководства по ИИ ботам | ИИ Боты 2025',
+  title: 'Руководства по ИИ ботам | ИИ Боты',
   description: 'Пошаговые инструкции и гайды по использованию ИИ ботов: ChatGPT, Claude, Midjourney, GitHub Copilot и других AI инструментов.',
   keywords: 'руководства ИИ боты, инструкции ChatGPT, гайд Claude, как использовать AI',
 }
@@ -228,7 +228,7 @@ export default function GuidesPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты 2025</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты</h3>
                 <p className="text-gray-400 text-sm sm:text-base">
                   Подробные руководства по ИИ инструментам
                 </p>

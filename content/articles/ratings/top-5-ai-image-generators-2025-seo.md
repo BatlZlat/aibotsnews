@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Топ-5 лучших генераторов изображений ИИ в 2025 году: полный рейтинг",
+  "description": "В 2025 году генерация изображений с помощью искусственного интеллекта достигла невероятных высот. Современные ИИ-инструменты способны создавать фотографическ...",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/top-5-ai-image-generators-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-top-5-ai-image-generators-2025-seo.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Топ-5 лучших генераторов изображений ИИ в 2025 году: полный рейтинг" />
+<meta property="og:description" content="В 2025 году генерация изображений с помощью искусственного интеллекта достигла невероятных высот. Современные ИИ-инструменты способны создавать фотографическ..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/top-5-ai-image-generators-2025-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-top-5-ai-image-generators-2025-seo.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Топ-5 лучших генераторов изображений ИИ в 2025 году: полный рейтинг" />
+<meta name="twitter:description" content="В 2025 году генерация изображений с помощью искусственного интеллекта достигла невероятных высот. Современные ИИ-инструменты способны создавать фотографическ..." />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-top-5-ai-image-generators-2025-seo.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Ratings",
+      "item": "https://aibotsnews.ru/ratings"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Топ-5 лучших генераторов изобр...",
+      "item": "https://aibotsnews.ru/articles/top-5-ai-image-generators-2025-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: Топ-5 лучших генераторов изображений ИИ в 2025 году: полный рейтинг, ИИ боты, искусственный интеллект, AI, ratings -->
+
 # Топ-5 лучших генераторов изображений ИИ в 2025 году: полный рейтинг
 
 ## Введение

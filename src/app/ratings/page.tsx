@@ -27,7 +27,7 @@ function cleanText(text: string): string {
 }
 
 export const metadata: Metadata = {
-  title: 'Рейтинги ИИ ботов | ИИ Боты 2025',
+  title: 'Рейтинги ИИ ботов | ИИ Боты',
   description: 'Топ рейтинги лучших ИИ ботов: чат-боты, генераторы изображений, инструменты для программирования и продуктивности в 2025 году.',
   keywords: 'рейтинги ИИ боты, топ ИИ инструменты, лучшие AI боты, рейтинг ChatGPT, рейтинг Claude',
 }
@@ -239,7 +239,7 @@ export default function RatingsPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты 2025</h3>
+                <h3 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">ИИ Боты</h3>
                 <p className="text-gray-400 text-sm sm:text-base">
                   Объективные рейтинги и обзоры ИИ инструментов
                 </p>

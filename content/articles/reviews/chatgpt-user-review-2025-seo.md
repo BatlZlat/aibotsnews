@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "headline": "Мой опыт использования ChatGPT в 2025 году: честный отзыв",
+  "description": "Привет! Меня зовут Алексей, и я работаю маркетологом в IT-компании уже более 5 лет. В этой статье я поделюсь своим личным опытом использования ChatGPT в 2025...",
+  "author": {
+    "@type": "Organization",
+    "name": "ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/articles/chatgpt-user-review-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-chatgpt-user-review-2025-seo.png",
+    "width": 1200,
+    "height": 630
+  }
+}
+</script>
+
+<!-- Open Graph meta tags -->
+<meta property="og:title" content="Мой опыт использования ChatGPT в 2025 году: честный отзыв" />
+<meta property="og:description" content="Привет! Меня зовут Алексей, и я работаю маркетологом в IT-компании уже более 5 лет. В этой статье я поделюсь своим личным опытом использования ChatGPT в 2025..." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://aibotsnews.ru/articles/chatgpt-user-review-2025-seo" />
+<meta property="og:image" content="https://aibotsnews.ru/og-image-chatgpt-user-review-2025-seo.png" />
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Мой опыт использования ChatGPT в 2025 году: честный отзыв" />
+<meta name="twitter:description" content="Привет! Меня зовут Алексей, и я работаю маркетологом в IT-компании уже более 5 лет. В этой статье я поделюсь своим личным опытом использования ChatGPT в 2025..." />
+<meta name="twitter:image" content="https://aibotsnews.ru/og-image-chatgpt-user-review-2025-seo.png" />
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reviews",
+      "item": "https://aibotsnews.ru/reviews"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Мой опыт использования ChatGPT...",
+      "item": "https://aibotsnews.ru/articles/chatgpt-user-review-2025-seo"
+    }
+  ]
+}
+</script>
+
+<!-- SEO Keywords: Мой опыт использования ChatGPT в 2025 году: честный отзыв, ИИ боты, искусственный интеллект, AI, reviews -->
+
 # Мой опыт использования ChatGPT в 2025 году: честный отзыв
 
 ## Введение

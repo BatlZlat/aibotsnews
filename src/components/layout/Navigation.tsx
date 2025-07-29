@@ -14,7 +14,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="text-xl sm:text-2xl">🤖</div>
-            <span className="text-lg sm:text-xl font-bold text-gray-900">ИИ Боты 2025</span>
+            <span className="text-lg sm:text-xl font-bold text-gray-900">ИИ Боты</span>
           </Link>
 
           {/* Desktop Navigation */}
