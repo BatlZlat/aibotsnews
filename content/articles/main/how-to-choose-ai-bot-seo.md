@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Как выбрать ИИ бота для ваших задач: полное руководство",
-  "description": "*Обновлено: Июль 2025*",
+  "description": "Обновлено: Июль 2025",
   "author": {
     "@type": "Organization",
     "name": "ИИ Боты"
@@ -34,7 +34,7 @@
 
 <!-- Open Graph meta tags -->
 <meta property="og:title" content="Как выбрать ИИ бота для ваших задач: полное руководство" />
-<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:description" content="Обновлено: Июль 2025" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aibotsnews.ru/articles/how-to-choose-ai-bot-seo" />
 <meta property="og:image" content="https://aibotsnews.ru/og-image-how-to-choose-ai-bot-seo.png" />
@@ -42,7 +42,7 @@
 <!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Как выбрать ИИ бота для ваших задач: полное руководство" />
-<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:description" content="Обновлено: Июль 2025" />
 <meta name="twitter:image" content="https://aibotsnews.ru/og-image-how-to-choose-ai-bot-seo.png" />
 
 <!-- Breadcrumb Schema -->
@@ -77,7 +77,7 @@
 
 # Как выбрать ИИ бота для ваших задач: полное руководство
 
-*Обновлено: Июль 2025*
+Обновлено: Июль 2025
 
 ## Введение
 

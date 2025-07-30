@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "Article",
   "headline": "Топ-10 лучших ИИ ботов для бизнеса в 2025 году",
-  "description": "*Обновлено: Июль 2025*",
+  "description": "Обновлено: Июль 2025",
   "author": {
     "@type": "Organization",
     "name": "ИИ Боты"
@@ -34,7 +34,7 @@
 
 <!-- Open Graph meta tags -->
 <meta property="og:title" content="Топ-10 лучших ИИ ботов для бизнеса в 2025 году" />
-<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:description" content="Обновлено: Июль 2025" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aibotsnews.ru/articles/top-10-ai-bots-for-business-2024-seo" />
 <meta property="og:image" content="https://aibotsnews.ru/og-image-top-10-ai-bots-for-business-2024-seo.png" />
@@ -42,7 +42,7 @@
 <!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Топ-10 лучших ИИ ботов для бизнеса в 2025 году" />
-<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:description" content="Обновлено: Июль 2025" />
 <meta name="twitter:image" content="https://aibotsnews.ru/og-image-top-10-ai-bots-for-business-2024-seo.png" />
 
 <!-- Breadcrumb Schema -->
@@ -77,7 +77,7 @@
 
 # Топ-10 лучших ИИ ботов для бизнеса в 2025 году
 
-*Обновлено: Июль 2025*
+Обновлено: Июль 2025
 
 ## Введение
 
