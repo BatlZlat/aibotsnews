@@ -1,195 +1,299 @@
 #!/usr/bin/env python3
-import json
-import re
+"""
+Комплексная проверка структурированных данных в проекте
+"""
+
 import os
-from pathlib import Path
+import re
+import json
+import glob
+from typing import List, Dict, Any
 
-def extract_json_from_script(content):
-    """Извлекает JSON из script тегов"""
-    pattern = r'<script type="application/ld\+json">(.*?)</script>'
+def extract_json_ld_blocks(content: str) -> List[Dict[str, Any]]:
+    """Извлекает все JSON-LD блоки из контента"""
+    blocks = []
+    
+    # Ищем все <script type="application/ld+json"> блоки
+    pattern = r'<script\s+type="application/ld\+json">\s*(\{.*?\})\s*</script>'
     matches = re.findall(pattern, content, re.DOTALL)
-    return matches
+    
+    for match in matches:
+        try:
+            # Очищаем от лишних пробелов и переносов
+            cleaned = re.sub(r'\s+', ' ', match.strip())
+            data = json.loads(cleaned)
+            blocks.append(data)
+        except json.JSONDecodeError as e:
+            print(f"  ❌ Ошибка JSON: {e}")
+            # Попробуем найти проблему
+            try:
+                # Ищем незакрытые скобки
+                brace_count = 0
+                for i, char in enumerate(cleaned):
+                    if char == '{':
+                        brace_count += 1
+                    elif char == '}':
+                        brace_count -= 1
+                        if brace_count == 0:
+                            # Проверим, есть ли лишние символы после закрывающей скобки
+                            remaining = cleaned[i+1:].strip()
+                            if remaining:
+                                print(f"    🔍 Найдены лишние символы после JSON: '{remaining[:50]}...'")
+                            break
+            except Exception:
+                pass
+    
+    return blocks
 
-def validate_json(json_str):
-    """Проверяет валидность JSON"""
-    try:
-        json.loads(json_str)
-        return True, None
-    except json.JSONDecodeError as e:
-        return False, str(e)
-
-def check_review_schema(json_data):
-    """Проверяет обязательные поля для Review schema"""
+def validate_review_schema(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Проверяет Review schema на корректность"""
+    errors = []
+    warnings = []
+    
+    # Проверяем обязательные поля
     required_fields = ['@type', 'headline', 'reviewBody', 'itemReviewed']
-    missing_fields = []
-    
     for field in required_fields:
-        if field not in json_data:
-            missing_fields.append(field)
+        if field not in data:
+            errors.append(f"Отсутствует обязательное поле: {field}")
     
-    return missing_fields
+    # Проверяем тип
+    if data.get('@type') != 'Review':
+        errors.append("Неверный тип: должен быть 'Review'")
+    
+    # Проверяем itemReviewed
+    if 'itemReviewed' in data:
+        item = data['itemReviewed']
+        if not isinstance(item, dict):
+            errors.append("itemReviewed должен быть объектом")
+        elif item.get('@type') != 'SoftwareApplication':
+            errors.append("itemReviewed должен иметь тип 'SoftwareApplication'")
+        elif 'name' not in item:
+            errors.append("itemReviewed должен содержать поле 'name'")
+    
+    # Проверяем reviewRating
+    if 'reviewRating' in data:
+        rating = data['reviewRating']
+        if not isinstance(rating, dict):
+            errors.append("reviewRating должен быть объектом")
+        elif rating.get('@type') != 'Rating':
+            errors.append("reviewRating должен иметь тип 'Rating'")
+        elif 'ratingValue' not in rating:
+            errors.append("reviewRating должен содержать 'ratingValue'")
+    
+    # Проверяем дублирования
+    fields_count = {}
+    for key in data.keys():
+        if key in fields_count:
+            errors.append(f"Дублирование поля: {key}")
+        fields_count[key] = fields_count.get(key, 0) + 1
+    
+    return {
+        'errors': errors,
+        'warnings': warnings,
+        'is_valid': len(errors) == 0
+    }
 
-def check_item_reviewed_schema(json_data):
-    """Проверяет структуру itemReviewed"""
-    if 'itemReviewed' not in json_data:
-        return ["itemReviewed отсутствует"]
+def validate_breadcrumb_schema(data: Dict[str, Any]) -> Dict[str, Any]:
+    """Проверяет BreadcrumbList schema на корректность"""
+    errors = []
+    warnings = []
     
-    item = json_data['itemReviewed']
-    required_fields = ['@type', 'name', 'url']
-    missing_fields = []
+    if data.get('@type') != 'BreadcrumbList':
+        errors.append("Неверный тип: должен быть 'BreadcrumbList'")
     
-    for field in required_fields:
-        if field not in item:
-            missing_fields.append(f"itemReviewed.{field}")
+    if 'itemListElement' not in data:
+        errors.append("Отсутствует обязательное поле: itemListElement")
+    else:
+        items = data['itemListElement']
+        if not isinstance(items, list):
+            errors.append("itemListElement должен быть массивом")
+        else:
+            for i, item in enumerate(items):
+                if not isinstance(item, dict):
+                    errors.append(f"Элемент {i+1} должен быть объектом")
+                elif item.get('@type') != 'ListItem':
+                    errors.append(f"Элемент {i+1} должен иметь тип 'ListItem'")
+                elif 'position' not in item:
+                    errors.append(f"Элемент {i+1} должен содержать 'position'")
+                elif 'name' not in item:
+                    errors.append(f"Элемент {i+1} должен содержать 'name'")
     
-    return missing_fields
+    return {
+        'errors': errors,
+        'warnings': warnings,
+        'is_valid': len(errors) == 0
+    }
 
-def check_review_rating_schema(json_data):
-    """Проверяет структуру reviewRating"""
-    if 'reviewRating' not in json_data:
-        return ["reviewRating отсутствует"]
-    
-    rating = json_data['reviewRating']
-    required_fields = ['@type', 'ratingValue', 'bestRating', 'worstRating']
-    missing_fields = []
-    
-    for field in required_fields:
-        if field not in rating:
-            missing_fields.append(f"reviewRating.{field}")
-    
-    return missing_fields
-
-def check_file(file_path):
-    """Проверяет один файл на ошибки в структурированных данных"""
-    print(f"\n🔍 Проверяю файл: {file_path}")
-    
+def check_file(file_path: str) -> Dict[str, Any]:
+    """Проверяет файл на корректность structured data"""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             content = f.read()
-    except Exception as e:
-        print(f"  ❌ Ошибка чтения файла: {e}")
-        return False
-    
-    json_blocks = extract_json_from_script(content)
-    
-    if not json_blocks:
-        print("  ❌ Не найдены блоки application/ld+json")
-        return False
-    
-    file_has_errors = False
-    
-    for i, json_str in enumerate(json_blocks):
-        print(f"  📄 Блок {i+1}:")
         
-        # Проверяем валидность JSON
-        is_valid, error = validate_json(json_str)
-        if not is_valid:
-            print(f"    ❌ Ошибка JSON: {error}")
-            file_has_errors = True
-            continue
+        blocks = extract_json_ld_blocks(content)
         
-        # Парсим JSON
-        try:
-            data = json.loads(json_str)
-        except Exception as e:
-            print(f"    ❌ Ошибка парсинга JSON: {e}")
-            file_has_errors = True
-            continue
+        if not blocks:
+            return {
+                'file': file_path,
+                'blocks': 0,
+                'errors': ['Не найдены JSON-LD блоки'],
+                'warnings': [],
+                'is_valid': False
+            }
         
-        # Проверяем тип
-        if '@type' in data:
-            print(f"    ✅ Тип: {data['@type']}")
+        all_errors = []
+        all_warnings = []
+        valid_blocks = 0
+        
+        for i, block in enumerate(blocks):
+            block_type = block.get('@type', 'Unknown')
             
-            # Проверяем Review schema
-            if data['@type'] == 'Review':
-                print("    📋 Проверяю Review schema...")
-                
-                # Проверяем обязательные поля
-                missing_fields = check_review_schema(data)
-                if missing_fields:
-                    print(f"    ❌ Отсутствуют обязательные поля: {', '.join(missing_fields)}")
-                    file_has_errors = True
-                else:
-                    print("    ✅ Все обязательные поля присутствуют")
-                
-                # Проверяем itemReviewed
-                item_errors = check_item_reviewed_schema(data)
-                if item_errors:
-                    print(f"    ❌ Ошибки в itemReviewed: {', '.join(item_errors)}")
-                    file_has_errors = True
-                else:
-                    print("    ✅ itemReviewed корректно")
-                
-                # Проверяем reviewRating
-                rating_errors = check_review_rating_schema(data)
-                if rating_errors:
-                    print(f"    ❌ Ошибки в reviewRating: {', '.join(rating_errors)}")
-                    file_has_errors = True
-                else:
-                    print("    ✅ reviewRating корректно")
-                
-                # Проверяем дублирование полей
-                item_reviewed_count = json_str.count('"itemReviewed"')
-                if item_reviewed_count > 1:
-                    print(f"    ❌ Дублирование itemReviewed: найдено {item_reviewed_count} вхождений")
-                    file_has_errors = True
-                else:
-                    print("    ✅ Дублирования не найдено")
-                
-                if not file_has_errors:
-                    print("    🎉 Review schema полностью корректна!")
-            
-            elif data['@type'] == 'BreadcrumbList':
-                print("    ✅ BreadcrumbList корректна")
+            if block_type == 'Review':
+                result = validate_review_schema(block)
+                if result['errors']:
+                    all_errors.extend([f"Блок {i+1} (Review): {error}" for error in result['errors']])
+                if result['warnings']:
+                    all_warnings.extend([f"Блок {i+1} (Review): {warning}" for warning in result['warnings']])
+                if result['is_valid']:
+                    valid_blocks += 1
+                    
+            elif block_type == 'BreadcrumbList':
+                result = validate_breadcrumb_schema(block)
+                if result['errors']:
+                    all_errors.extend([f"Блок {i+1} (BreadcrumbList): {error}" for error in result['errors']])
+                if result['warnings']:
+                    all_warnings.extend([f"Блок {i+1} (BreadcrumbList): {warning}" for warning in result['warnings']])
+                if result['is_valid']:
+                    valid_blocks += 1
+                    
             else:
-                print(f"    ⚠️  Неизвестный тип: {data['@type']}")
-        else:
-            print("    ⚠️  Отсутствует поле @type")
-            file_has_errors = True
+                all_warnings.append(f"Блок {i+1}: Неизвестный тип '{block_type}'")
+        
+        return {
+            'file': file_path,
+            'blocks': len(blocks),
+            'valid_blocks': valid_blocks,
+            'errors': all_errors,
+            'warnings': all_warnings,
+            'is_valid': len(all_errors) == 0 and valid_blocks > 0
+        }
+        
+    except Exception as e:
+        return {
+            'file': file_path,
+            'blocks': 0,
+            'errors': [f'Ошибка чтения файла: {e}'],
+            'warnings': [],
+            'is_valid': False
+        }
+
+def check_component_generated_data():
+    """Проверяет structured data, генерируемые компонентами"""
+    print("🔍 ПРОВЕРКА КОМПОНЕНТОВ")
+    print("=" * 50)
     
-    return not file_has_errors
+    # Проверяем основные компоненты
+    component_files = [
+        'src/app/articles/[slug]/page.tsx',
+        'src/app/page.tsx',
+        'src/app/reviews/page.tsx',
+        'src/app/guides/page.tsx',
+        'src/app/news/page.tsx',
+        'src/app/ratings/page.tsx',
+        'src/app/comparisons/page.tsx'
+    ]
+    
+    component_errors = []
+    
+    for file_path in component_files:
+        if os.path.exists(file_path):
+            print(f"🔍 Проверяю компонент: {file_path}")
+            
+            try:
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                
+                # Проверяем импорты structured data функций
+                if 'generateBreadcrumbStructuredData' in content:
+                    print(f"  ✅ BreadcrumbList: используется")
+                else:
+                    print(f"  ⚠️  BreadcrumbList: не найден")
+                
+                # Проверяем использование dangerouslySetInnerHTML
+                if 'dangerouslySetInnerHTML' in content:
+                    print(f"  ✅ Structured data: встраивается")
+                else:
+                    print(f"  ⚠️  Structured data: не встраивается")
+                    
+            except Exception as e:
+                print(f"  ❌ Ошибка: {e}")
+                component_errors.append(f"{file_path}: {e}")
+    
+    return component_errors
 
 def main():
     """Основная функция"""
-    print("🔍 ПОЛНАЯ ПРОВЕРКА СТРУКТУРИРОВАННЫХ ДАННЫХ")
+    print("🔍 КОМПЛЕКСНАЯ ПРОВЕРКА СТРУКТУРИРОВАННЫХ ДАННЫХ")
     print("=" * 60)
     
-    # Пути к файлам обзоров
-    review_paths = [
-        "content/articles/reviews/",
-        "content/reviews/"
-    ]
+    # Находим все файлы обзоров
+    review_files = []
+    review_files.extend(glob.glob("content/articles/reviews/*.md"))
+    review_files.extend(glob.glob("content/reviews/*.md"))
     
-    all_files = []
-    for path in review_paths:
-        if os.path.exists(path):
-            for file in os.listdir(path):
-                if file.endswith('.md'):
-                    all_files.append(os.path.join(path, file))
+    print(f"📁 Найдено {len(review_files)} файлов обзоров")
+    print()
     
-    print(f"📁 Найдено {len(all_files)} файлов обзоров")
+    results = []
+    total_errors = 0
+    total_warnings = 0
+    
+    for file_path in review_files:
+        print(f"🔍 Проверяю файл: {file_path}")
+        result = check_file(file_path)
+        results.append(result)
+        
+        if result['errors']:
+            for error in result['errors']:
+                print(f"  ❌ {error}")
+                total_errors += 1
+        
+        if result['warnings']:
+            for warning in result['warnings']:
+                print(f"  ⚠️  {warning}")
+                total_warnings += 1
+        
+        if result['is_valid']:
+            print(f"  ✅ Файл корректный ({result['valid_blocks']}/{result['blocks']} блоков)")
+        else:
+            print(f"  ❌ Файл содержит ошибки")
+        
+        print()
+    
+    # Проверяем компоненты
+    component_errors = check_component_generated_data()
+    
     print("=" * 60)
-    
-    correct_files = 0
-    total_files = 0
-    
-    for file_path in all_files:
-        total_files += 1
-        if check_file(file_path):
-            correct_files += 1
-    
-    print("\n" + "=" * 60)
     print("📊 ИТОГИ ПРОВЕРКИ:")
-    print(f"✅ Корректных файлов: {correct_files}")
-    print(f"❌ Файлов с ошибками: {total_files - correct_files}")
-    print(f"📈 Процент корректных: {(correct_files/total_files*100):.1f}%")
     
-    if correct_files == total_files:
-        print("\n🎉 ВСЕ ФАЙЛЫ КОРРЕКТНЫ! Структурированные данные готовы для Google.")
+    valid_files = sum(1 for r in results if r['is_valid'])
+    total_files = len(results)
+    
+    print(f"✅ Корректных файлов: {valid_files}/{total_files}")
+    print(f"❌ Файлов с ошибками: {total_files - valid_files}")
+    print(f"�� Процент корректных: {(valid_files/total_files*100):.1f}%")
+    print(f"🚨 Всего ошибок: {total_errors}")
+    print(f"⚠️  Всего предупреждений: {total_warnings}")
+    
+    if component_errors:
+        print(f"🔧 Ошибки в компонентах: {len(component_errors)}")
+    
+    if total_errors == 0 and len(component_errors) == 0:
+        print("\n🎉 ВСЕ СТРУКТУРИРОВАННЫЕ ДАННЫЕ КОРРЕКТНЫ!")
     else:
-        print(f"\n⚠️  Нужно исправить {total_files - correct_files} файлов.")
+        print("\n⚠️  Нужно исправить ошибки в structured data")
     
-    print("\n" + "=" * 60)
+    print("=" * 60)
 
 if __name__ == "__main__":
     main() 

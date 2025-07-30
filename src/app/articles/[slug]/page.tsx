@@ -5,7 +5,7 @@ import { PartnerLink } from '@/components/ads/PartnerLink'
 import fs from 'fs'
 import path from 'path'
 import Link from 'next/link'
-import { generateArticleStructuredData, generateBreadcrumbStructuredData } from '@/utils/seo';
+import { generateBreadcrumbStructuredData } from '@/utils/seo';
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const articlesDir = path.join(process.cwd(), 'content/articles')
@@ -150,7 +150,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
 
   // Сначала преобразуем markdown-таблицы в HTML-таблицы
   const htmlContent = convertMarkdownTables(articleContent)
-    .replace(/^#\s+(.+)$/m, '<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6">$1</h1>')
+    .replace(/^#\s+(.+)$/m, '') // Удаляем H1 заголовок, так как он уже есть в header
     .replace(/^##\s+(.+)$/gm, '<h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mt-8 mb-4">$1</h2>')
     .replace(/^###\s+(.+)$/gm, '<h3 class="text-xl sm:text-2xl font-bold text-gray-900 mt-6 mb-3">$1</h3>')
     .replace(/^####\s+(.+)$/gm, '<h4 class="text-lg sm:text-xl font-semibold text-gray-900 mt-4 mb-2">$1</h4>')
@@ -187,33 +187,15 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     { title, href: `/articles/${slug}` }
   ];
   
-  // Формируем structured data с дополнительными проверками
-  const safeBaseUrl = process.env.EXT_PUBLIC_SITE_URL || process.env.NEXT_PUBLIC_SITE_URL || (process.env.DOMEN_NAME ? `https://${process.env.DOMEN_NAME}` : 'https://aibotsnews.ru');
-  
-  const articleStructuredData = generateArticleStructuredData({
-    title,
-    excerpt: safeMeta(metaData, 'description', `Статья о ${title}`),
-    featuredImage: safeMeta(metaData, 'ogImage', `${safeBaseUrl}/default-image.png`),
-    author: 'ИИ Боты',
-    publishedAt: safeMeta(metaData, 'datePublished', new Date().toISOString()),
-    updatedAt: safeMeta(metaData, 'dateModified', new Date().toISOString()),
-    slug
-  });
+  // Формируем breadcrumb structured data
   const breadcrumbStructuredData = generateBreadcrumbStructuredData(breadcrumbs);
-
-  // Проверяем валидность structured data
-  const articleStructuredDataJson = JSON.stringify(articleStructuredData);
   const breadcrumbStructuredDataJson = JSON.stringify(breadcrumbStructuredData);
   
 
   
   return (
     <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: articleStructuredDataJson }}
-      />
+      {/* Breadcrumb Structured Data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: breadcrumbStructuredDataJson }}
