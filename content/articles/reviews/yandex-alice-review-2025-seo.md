@@ -4,7 +4,7 @@
   "@context": "https://schema.org",
   "@type": "Review",
   "headline": "Yandex.Alice: Обзор ИИ помощника от Яндекса в 2025 году",
-  "description": "*Обновлено: Июль 2025*",
+  "description": "Обновлено: Июль 2025",
   "reviewBody": "Yandex.Alice: Обзор ИИ помощника от Яндекса в 2025 году представляет собой современный ИИ-инструмент, который заслуживает внимания пользователей. В этом обзоре мы детально рассмотрим его возможности, преимущества и недостатки.",
   "author": {
     "@type": "Organization",
@@ -49,7 +49,7 @@
 
 <!-- Open Graph meta tags -->
 <meta property="og:title" content="Yandex.Alice: Обзор ИИ помощника от Яндекса в 2025 году" />
-<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:description" content="Обновлено: Июль 2025" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aibotsnews.ru/articles/yandex-alice-review-2025-seo" />
 <meta property="og:image" content="https://aibotsnews.ru/og-image-yandex-alice-review-2025-seo.png" />
@@ -57,7 +57,7 @@
 <!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Yandex.Alice: Обзор ИИ помощника от Яндекса в 2025 году" />
-<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:description" content="Обновлено: Июль 2025" />
 <meta name="twitter:image" content="https://aibotsnews.ru/og-image-yandex-alice-review-2025-seo.png" />
 
 <!-- Breadcrumb Schema -->
@@ -92,7 +92,7 @@
 
 # Yandex.Alice: Обзор ИИ помощника от Яндекса в 2025 году
 
-*Обновлено: Июль 2025*
+Обновлено: Июль 2025
 
 ## Введение
 

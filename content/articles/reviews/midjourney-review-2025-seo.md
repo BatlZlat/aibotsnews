@@ -49,7 +49,7 @@
 
 <!-- Open Graph meta tags -->
 <meta property="og:title" content="Midjourney: Обзор ИИ для генерации изображений в 2025 году" />
-<meta property="og:description" content="*Обновлено: Июль 2025*" />
+<meta property="og:description" content="Обновлено: Июль 2025" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://aibotsnews.ru/articles/midjourney-review-2025-seo" />
 <meta property="og:image" content="https://aibotsnews.ru/og-image-midjourney-review-2025-seo.png" />
@@ -57,7 +57,7 @@
 <!-- Twitter Card meta tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Midjourney: Обзор ИИ для генерации изображений в 2025 году" />
-<meta name="twitter:description" content="*Обновлено: Июль 2025*" />
+<meta name="twitter:description" content="Обновлено: Июль 2025" />
 <meta name="twitter:image" content="https://aibotsnews.ru/og-image-midjourney-review-2025-seo.png" />
 
 <!-- Breadcrumb Schema -->
@@ -92,7 +92,7 @@
 
 # Midjourney: Обзор ИИ для генерации изображений в 2025 году
 
-*Обновлено: Июль 2025*
+Обновлено: Июль 2025
 
 ## Введение
 
