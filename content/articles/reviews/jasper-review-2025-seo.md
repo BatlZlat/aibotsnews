@@ -35,6 +35,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "Jasper",
+    "description": "ИИ-инструмент Jasper",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://jasper.ai"
   }
 }
 </script>

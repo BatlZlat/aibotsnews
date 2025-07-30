@@ -35,6 +35,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "GitHub Copilot",
+    "description": "ИИ-инструмент для программирования",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://github.com/features/copilot"
   }
 }
 </script>

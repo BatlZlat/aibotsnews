@@ -35,6 +35,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "ChatGPT",
+    "description": "ИИ-инструмент ChatGPT",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://chat.openai.com"
   }
 }
 </script>

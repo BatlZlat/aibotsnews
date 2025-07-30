@@ -35,6 +35,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "DALL-E",
+    "description": "ИИ-инструмент DALL-E",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://openai.com/dall-e-2"
   }
 }
 </script>

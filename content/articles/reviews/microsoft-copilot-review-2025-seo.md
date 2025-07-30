@@ -35,6 +35,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "Microsoft Copilot",
+    "description": "ИИ-инструмент Microsoft Copilot",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://copilot.microsoft.com"
   }
 }
 </script>

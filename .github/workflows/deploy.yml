@@ -28,6 +28,9 @@ jobs:
           sshpass -p "$SSHPASS" ssh -o StrictHostKeyChecking=no root@${{ secrets.SSH_HOST }} '
             cd /root/project/Landing/AI-bots && \
             git fetch --all --tags && \
+            echo "🧹 Очищаем локальные изменения..." && \
+            git reset --hard HEAD && \
+            git clean -fd && \
             git checkout ${{ github.ref_name }} && \
             echo "📋 Останавливаем только aibotsnews.service..." && \
             systemctl stop aibotsnews.service || true && \
@@ -35,8 +38,13 @@ jobs:
             sleep 5 && \
             echo "🧹 Очищаем кэш только для этого проекта..." && \
             rm -rf .next/ node_modules/ || true && \
+            echo "💾 Проверяем swap..." && \
+            free -h && \
+            swapon --show && \
             echo "📦 Устанавливаем зависимости..." && \
-            npm ci --production && \
+            export NODE_OPTIONS="--max-old-space-size=512" && \
+            npm cache clean --force && \
+            npm ci --production --no-optional && \
             echo "🔨 Собираем проект..." && \
             npm run build && \
             echo "🚀 Запускаем только aibotsnews.service..." && \

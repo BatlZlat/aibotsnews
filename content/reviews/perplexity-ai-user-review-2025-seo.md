@@ -37,6 +37,14 @@
     "ratingValue": "8",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "Perplexity AI",
+    "description": "ИИ-инструмент Perplexity AI",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://example.com"
   }
 }
 </script>
