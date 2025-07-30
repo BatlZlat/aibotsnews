@@ -1,4 +1,46 @@
-[33mcommit 4d7abd1577ebcf96f741150a786c0f739dd8f488[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+[33mcommit 4d4e536b6bf4e6c0a38dc7c7b215fe164c8d9c9d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: b5e9a0b 5cb8ce2
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Wed Jul 30 22:28:13 2025 +0500
+
+    Merge pull request #22 from BatlZlat/develop
+    
+    v1.0.14 - Включил TypeScript в package.json, устранена проблема в midjourney-review-2025-seo.md
+
+[33mcommit 5cb8ce2ba6e0f843914e222e1a4e7fe8f837edfd[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Wed Jul 30 22:24:13 2025 +0500
+
+    v1.0.14 - Включил TypeScript в package.json, устранена проблема в midjourney-review-2025-seo.md
+
+[33mcommit 217f2ff5371d108e725b9f03fbecfec654a3ff29[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Wed Jul 30 21:52:21 2025 +0500
+
+    v1.0.14 - Включил TypeScript в package.json
+
+[33mcommit b5e9a0b6b1fb4b56c153d3fa013341f6e941fb5b[m[33m ([m[1;33mtag: [m[1;33mv1.0.13[m[33m)[m
+Merge: 4d7abd1 013e592
+Author: BatlZlat <batl.zlat87@gmail.com>
+Date:   Tue Jul 29 20:13:02 2025 +0500
+
+    Merge pull request #21 from BatlZlat/develop
+    
+    v1.0.13 исправил SEO-блоки и оптимизировал под запрос ИИ Боты. Попытка исправления ошибок в автодеплои
+
+[33mcommit 013e59229695ca635d999fa6e2b625652b1a35a2[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Tue Jul 29 20:09:29 2025 +0500
+
+    v1.0.13 исправил SEO-блоки и оптимизировал под запрос ИИ Боты. Попытка исправления ошибок в автодеплои
+
+[33mcommit 5d3270c54fa9da77307f0d9d8b8c071f0ac08c9a[m
+Author: Batl-zlat <batl.zlat87@gmail.com>
+Date:   Tue Jul 29 19:27:12 2025 +0500
+
+    v1.0.13 исправил SEO-блоки и оптимизировал под запрос ИИ Боты
+
+[33mcommit 4d7abd1577ebcf96f741150a786c0f739dd8f488[m[33m ([m[1;33mtag: [m[1;33mv1.0.12.2[m[33m)[m
 Merge: 83c730f e432dc3
 Author: BatlZlat <batl.zlat87@gmail.com>
 Date:   Tue Jul 29 00:28:41 2025 +0500
@@ -7,7 +49,7 @@ Date:   Tue Jul 29 00:28:41 2025 +0500
     
     v1.0.12.2 - Исправление конфликта sidebar-banner
 
-[33mcommit e432dc38543af9c0f9400fc6949becdf0f031c56[m[33m ([m[1;31morigin/develop[m[33m, [m[1;32mdevelop[m[33m)[m
+[33mcommit e432dc38543af9c0f9400fc6949becdf0f031c56[m
 Author: Batl-zlat <batl.zlat87@gmail.com>
 Date:   Tue Jul 29 00:26:44 2025 +0500
 

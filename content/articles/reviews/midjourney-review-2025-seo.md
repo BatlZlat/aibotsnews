@@ -35,6 +35,14 @@
     "ratingValue": "9",
     "bestRating": "10",
     "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "Midjourney",
+    "description": "ИИ-инструмент для генерации изображений",
+    "applicationCategory": "GraphicsApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://midjourney.com"
   }
 }
 </script>

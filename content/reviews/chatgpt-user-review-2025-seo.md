@@ -1,3 +1,80 @@
+<!-- Schema.org structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "headline": "Отзыв о ChatGPT 2025: Реальный опыт использования от маркетолога",
+  "description": "Отзыв пользователя о ChatGPT. Реальный опыт использования, плюсы и минусы.",
+  "reviewBody": "Личный опыт использования ChatGPT. Подробный анализ возможностей, интерфейса и практического применения.",
+  "author": {
+    "@type": "Person",
+    "name": "Пользователь ИИ Боты"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "ИИ Боты",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://aibotsnews.ru/reviews/chatgpt-user-review-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-chatgpt-user-review-2025-seo.png",
+    "width": 1200,
+    "height": 630
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "8",
+    "bestRating": "10",
+    "worstRating": "1"
+  },
+  "itemReviewed": {
+    "@type": "SoftwareApplication",
+    "name": "ChatGPT",
+    "description": "ИИ-инструмент ChatGPT",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Web Browser",
+    "url": "https://example.com"
+  }
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reviews",
+      "item": "https://aibotsnews.ru/reviews"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Отзыв о ChatGPT 2025: Реальный опыт использования ...",
+      "item": "https://aibotsnews.ru/reviews/chatgpt-user-review-2025-seo"
+    }
+  ]
+}
+</script>
+
 # Отзыв о ChatGPT 2025: Реальный опыт использования от маркетолога
 
 *Автор: Анна Соколова, Senior Marketing Manager*  
