@@ -1,30 +1,72 @@
 
 <!-- Schema.org structured data -->
+<!-- Schema.org structured data -->
 <script type="application/ld+json">
-{{
+{
   "@context": "https://schema.org",
-  "@type": "Article",
-  "headline": "AI Tools Guide 2025",
-  "description": "Complete guide to AI tools and bots in 2025",
-  "author": {{
+  "@type": "Review",
+  "headline": "Отзыв о Midjourney 2025: Мнение графического дизайнера",
+  "description": "Отзыв пользователя о Отзыв о Midjourney 2025: Мнение графического дизайнера. Реальный опыт использования, плюсы и минусы.",
+  "reviewBody": "Личный опыт использования Отзыв о Midjourney 2025: Мнение графического дизайнера. Подробный анализ возможностей, интерфейса и практического применения.",
+  "author": {
+    "@type": "Person",
+    "name": "Пользователь ИИ Боты"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name": "AI Bots Guide"
-  }},
-  "publisher": {{
-    "@type": "Organization",
-    "name": "AI Bots Guide",
-    "logo": {{
+    "name": "ИИ Боты",
+    "logo": {
       "@type": "ImageObject",
-      "url": "https://aibotsguide.com/logo.png"
-    }}
-  }},
-  "datePublished": "2025-02-01",
-  "dateModified": "2025-02-01",
-  "mainEntityOfPage": {{
+      "url": "https://aibotsnews.ru/logo.png"
+    }
+  },
+  "datePublished": "2025-07-28",
+  "dateModified": "2025-07-28",
+  "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://aibotsguide.com"
-  }}
-}}
+    "@id": "https://aibotsnews.ru/reviews/midjourney-user-review-2025-seo"
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://aibotsnews.ru/og-image-midjourney-user-review-2025-seo.png",
+    "width": 1200,
+    "height": 630
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "8",
+    "bestRating": "10",
+    "worstRating": "1"
+  }
+}
+</script>
+
+<!-- Breadcrumb Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Главная",
+      "item": "https://aibotsnews.ru/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Reviews",
+      "item": "https://aibotsnews.ru/reviews"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Отзыв о Midjourney 2025: Мнение графического дизай...",
+      "item": "https://aibotsnews.ru/reviews/midjourney-user-review-2025-seo"
+    }
+  ]
+}
 </script>
 
 <!-- Open Graph meta tags -->
@@ -315,59 +357,3 @@ Midjourney стал незаменимым инструментом в моей 
 
 
 <!-- FAQ Schema -->
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {{
-      "@type": "Question",
-      "name": "What are the best AI tools in 2025?",
-      "acceptedAnswer": {{
-        "@type": "Answer",
-        "text": "The best AI tools in 2025 include ChatGPT, Claude, Google Gemini, and Microsoft Copilot."
-      }}
-    }},
-    {{
-      "@type": "Question", 
-      "name": "How to use AI tools effectively?",
-      "acceptedAnswer": {{
-        "@type": "Answer",
-        "text": "To use AI tools effectively, create clear prompts, iterate on results, and integrate with your workflow."
-      }}
-    }}
-  ]
-}}
-</script>
-
-<!-- Breadcrumb Schema -->
-<script type="application/ld+json">
-{{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {{
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://aibotsguide.com"
-    }},
-    {{
-      "@type": "ListItem", 
-      "position": 2,
-      "name": "AI Tools",
-      "item": "https://aibotsguide.com/tools"
-    }},
-    {{
-      "@type": "ListItem",
-      "position": 3, 
-      "name": "Guides",
-      "item": "https://aibotsguide.com/guides"
-    }}
-  ]
-}}
-</script>
-
-
-
-<!-- SEO Keywords: ChatGPT, Perplexity AI, экономия времени, автоматизация, Grammarly AI, анализ данных, Microsoft Copilot, ROI, автоматизация, ИИ бот, дизайн, Google Gemini, искусственный интеллект, обучение, маркетинг, эффективность, AI помощник, нейросеть, Google Bard, эффективность -->

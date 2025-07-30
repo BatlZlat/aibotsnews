@@ -5,6 +5,7 @@
   "@type": "Review",
   "headline": "GitHub Copilot: Обзор ИИ для программирования в 2025 году",
   "description": "*Обновлено: Июль 2025*",
+  "reviewBody": "GitHub Copilot: Обзор ИИ для программирования в 2025 году представляет собой современный ИИ-инструмент, который заслуживает внимания пользователей. В этом обзоре мы детально рассмотрим его возможности, преимущества и недостатки.",
   "author": {
     "@type": "Organization",
     "name": "ИИ Боты"
@@ -28,6 +29,12 @@
     "url": "https://aibotsnews.ru/og-image-github-copilot-review-2025-seo.png",
     "width": 1200,
     "height": 630
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": "8",
+    "bestRating": "10",
+    "worstRating": "1"
   }
 }
 </script>
