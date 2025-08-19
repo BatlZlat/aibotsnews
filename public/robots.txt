@@ -4,10 +4,21 @@ Allow: /
 # Sitemap
 Sitemap: https://aibotsnews.ru/sitemap.xml
 
-# Disallow admin areas
-Disallow: /admin/
-Disallow: /private/
+# Disallow old URL patterns
+Disallow: /articles/*.html
+Disallow: /reviews/*.html
+Disallow: /guides/*.html
+Disallow: /main
+Disallow: /users
+Disallow: /contact
+Disallow: /about
+Disallow: /privacy
 
-# Allow important directories
-Allow: /content/
-Allow: /public/
+# Allow new URL patterns
+Allow: /articles/
+Allow: /comparisons/
+Allow: /guides/
+Allow: /news/
+Allow: /ratings/
+Allow: /reviews/
+Allow: /search
